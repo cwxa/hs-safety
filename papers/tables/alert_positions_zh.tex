@@ -1,0 +1,13 @@
+\begin{table}[t]
+\centering\footnotesize
+\caption{域内告警位置；位置统计以正确检出为条件，召回率分母保留所有不安全回答。}\label{tab:alert_positions}
+\begin{tabular}{lrrrr}\toprule
+Method & Recall & Mean $\tau$ & Med. $\tau$ & $\tau/T$ (\%) \\
+\midrule
+Prompt LR & 22.9 $\pm$ 0.0 & 8.0 $\pm$ 0.0 & 8.0 $\pm$ 0.0 & 14.8 $\pm$ 0.0 \\
+Prefix TF--IDF LR & 28.3 $\pm$ 0.0 & 20.7 $\pm$ 0.0 & 8.0 $\pm$ 0.0 & 26.2 $\pm$ 0.0 \\
+Current-state LR & 43.9 $\pm$ 0.0 & 27.5 $\pm$ 0.0 & 16.0 $\pm$ 0.0 & 34.6 $\pm$ 0.0 \\
+Running-mean LR & 46.3 $\pm$ 0.0 & 15.1 $\pm$ 0.0 & 8.0 $\pm$ 0.0 & 23.5 $\pm$ 0.0 \\
+Dynamic GRU & 38.4 $\pm$ 6.1 & 47.9 $\pm$ 15.1 & 41.8 $\pm$ 18.3 & 54.0 $\pm$ 11.5 \\
+\bottomrule\end{tabular}
+\end{table}

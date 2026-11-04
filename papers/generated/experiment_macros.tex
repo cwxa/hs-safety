@@ -1,0 +1,21 @@
+% Generated from measured artifacts. Do not enter results manually.
+\newcommand{\ReportStatusEN}{Measured in-domain results are available for 3 of 3 configured dynamic-GRU seeds.}
+\newcommand{\ReportStatusZH}{已有3个预设动态GRU种子中的3个完成域内实测。}
+\newcommand{\AbstractResultsEN}{Across 3 completed seed(s), the dynamic GRU yields 38.1\% Recall@128 and 3.3\% sequence-level false-positive rate on the in-domain test split. External Recall@128 is 12.3\% without threshold adaptation. The static probe reaches 43.7\% at 5.6\% FPR under the same calibration rule.}
+\newcommand{\AbstractResultsZH}{在3个已完成种子上，动态GRU的域内测试Recall@128为38.1\%，序列级误报率为3.3\%。在不调整阈值的情况下，外部Recall@128为12.3\%。相同校准规则下，静态探针的Recall@128为43.7\%，误报率为5.6\%。}
+\newcommand{\ConclusionResultsEN}{Across 3 completed seed(s), the dynamic GRU yields 38.1\% Recall@128 and 3.3\% sequence-level false-positive rate on the in-domain test split. External Recall@128 is 12.3\% without threshold adaptation. The static probe reaches 43.7\% at 5.6\% FPR under the same calibration rule. These measurements concern final-response labels under causal replay and do not establish harm-onset localization.}
+\newcommand{\ConclusionResultsZH}{在3个已完成种子上，动态GRU的域内测试Recall@128为38.1\%，序列级误报率为3.3\%。在不调整阈值的情况下，外部Recall@128为12.3\%。相同校准规则下，静态探针的Recall@128为43.7\%，误报率为5.6\%。这些测量对应因果回放下的最终回答标签，不能证明能够定位危害起点。}
+\newcommand{\PCAVarianceEN}{The fitted 64-component projections retain 52.8, 56.9, 54.0, 69.0\% of training variance in the selected layer order, using 59,971 sampled checkpoints. This summary describes representation compression; the downstream comparisons evaluate risk prediction.}
+\newcommand{\PCAVarianceZH}{按所选层顺序，64维投影分别保留52.8, 56.9, 54.0, 69.0\%的训练方差，拟合共使用59,971个抽样检查点。该统计描述表征压缩程度，后续分类比较评价其风险预测表现。}
+\newcommand{\StrideResultsEN}{At strides of 4, 8 and 16 tokens, GRU Recall@128 is 40.5, 38.1, 37.0\%, with observed test FPRs of 3.0, 3.3, 3.5\%, respectively. Denser checks yield higher measured coverage in these runs, while larger strides reduce scoring frequency.}
+\newcommand{\StrideResultsZH}{步长为4、8和16个token时，GRU的Recall@128分别为40.5, 38.1, 37.0\%，实际测试误报率分别为3.0, 3.3, 3.5\%。本组运行中，更密集的检查对应更高的实测覆盖，较大步长则减少评分频率。}
+\newcommand{\AchievementDetectionEN}{The 0.5B dynamic GRU reaches 38.1\% Recall@128 versus 22.9\% for prompt-only logistic regression, with observed sequence FPRs of 3.27\% and 3.34\%, respectively.}
+\newcommand{\AchievementDetectionZH}{0.5B动态GRU的Recall@128为38.1\%，仅提示逻辑回归为22.9\%；两者实测整段误报率分别为3.27\%与3.34\%。}
+\newcommand{\AchievementScopeEN}{The evidence covers 13,610 eligible responses and 36 fitted detector instances across two backbone sizes and three fixed seeds.}
+\newcommand{\AchievementScopeZH}{实验证据覆盖13,610条合格回答、两种骨干规模和三个固定种子下的36个检测器实例。}
+\newcommand{\AchievementScaleEN}{Static-probe Recall@128 is 43.7\% with the 0.5B backbone and 54.0\% with 1.5B (observed FPRs 5.60\% and 5.75\%).}
+\newcommand{\AchievementScaleZH}{在相同回答上，0.5B与1.5B静态探针的Recall@128分别为43.7\%与54.0\%（实测误报率分别为5.60\%与5.75\%）。}
+\newcommand{\ReviewRankingEN}{The exploratory linear-probe comparison gives AUROC@128 of 0.8308 for hidden states and 0.8109 for prefix TF--IDF, with a paired 95\% difference interval of [0.0063, 0.0340].}
+\newcommand{\ReviewRankingZH}{探索性线性探针对照中，隐状态与前缀TF--IDF的AUROC@128分别为0.8308与0.8109，差值的配对95\%区间为[0.0063, 0.0340]。}
+\newcommand{\TimingProfileEN}{At 128 tokens, 2748/3018 main-test responses (91.1\%) and 215/591 external responses (36.4\%) have reached their endpoints; this difference motivates length-stratified evaluation alongside the strict pre-completion analysis.}
+\newcommand{\TimingProfileZH}{128-token预算下，主测试集2748/3018条回答（91.1\%）和外部集215/591条回答（36.4\%）已达终点；这一差异支持在严格完成前分析之外进一步采用长度分层评价。}

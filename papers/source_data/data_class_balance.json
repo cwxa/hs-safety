@@ -1,0 +1,37 @@
+[
+  {
+    "split": "train",
+    "n_responses": 7997,
+    "n_prompt_groups": 2211,
+    "n_unsafe": 4560,
+    "unsafe_percent": 57.02138301863199
+  },
+  {
+    "split": "dev",
+    "n_responses": 1003,
+    "n_prompt_groups": 282,
+    "n_unsafe": 551,
+    "unsafe_percent": 54.93519441674975
+  },
+  {
+    "split": "calibration",
+    "n_responses": 1001,
+    "n_prompt_groups": 275,
+    "n_unsafe": 563,
+    "unsafe_percent": 56.24375624375625
+  },
+  {
+    "split": "test",
+    "n_responses": 3018,
+    "n_prompt_groups": 2524,
+    "n_unsafe": 1732,
+    "unsafe_percent": 57.38899933730948
+  },
+  {
+    "split": "external",
+    "n_responses": 591,
+    "n_prompt_groups": 591,
+    "n_unsafe": 54,
+    "unsafe_percent": 9.137055837563452
+  }
+]

@@ -1,0 +1,5289 @@
+{
+  "schema_version": 1,
+  "task": "final_response_risk_prediction",
+  "config_signature": "3d86e5c03537de7270f2c4ce21897c50d332d2b0eac05b37dc61213e1af8eea0",
+  "target_fpr": 0.05,
+  "models": {
+    "gru": {
+      "seeds": {
+        "13": {
+          "threshold": 0.9618033170700073,
+          "calibration": {
+            "threshold": 0.9618033170700073,
+            "comparison": ">",
+            "target_fpr": 0.05,
+            "n_safe": 438,
+            "allowed_false_alarms": 21,
+            "empirical_sequence_fpr": 0.04794520547945205,
+            "note": "Empirical calibration constraint; no population-level FPR guarantee is claimed.",
+            "model": "gru",
+            "seed": 13,
+            "config_signature": "3d86e5c03537de7270f2c4ce21897c50d332d2b0eac05b37dc61213e1af8eea0",
+            "split": "calibration"
+          },
+          "splits": {
+            "dev": {
+              "n": 1003,
+              "n_safe": 452,
+              "n_unsafe": 551,
+              "roc_auc": 0.8513563432536179,
+              "average_precision": 0.8843178700827257,
+              "sequence_fpr": 0.03982300884955752,
+              "recall": 0.47186932849364793,
+              "precision": 0.935251798561151,
+              "f1": 0.6272617611580217,
+              "recall_at_budget": {
+                "32": 0.27586206896551724,
+                "64": 0.42286751361161523,
+                "128": 0.47186932849364793,
+                "256": 0.47186932849364793
+              },
+              "alert_coverage": 0.27716849451645065,
+              "n_detected_unsafe": 260,
+              "detected_alert_tokens_mean": 37.17307692307692,
+              "detected_alert_tokens_median": 32.0,
+              "normalized_alert_position_mean": 0.5109677862303591,
+              "confusion": {
+                "tp": 260,
+                "fp": 18,
+                "tn": 434,
+                "fn": 291
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 11,
+                  "recall": 0.45454545454545453
+                },
+                "child_abuse": {
+                  "n_unsafe": 2,
+                  "recall": 0.0
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 33,
+                  "recall": 0.030303030303030304
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 86,
+                  "recall": 0.3372093023255814
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 38,
+                  "recall": 0.6842105263157895
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 81,
+                  "recall": 0.6666666666666666
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 77,
+                  "recall": 0.44155844155844154
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 21,
+                  "recall": 0.38095238095238093
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 154,
+                  "recall": 0.45454545454545453
+                },
+                "privacy_violation": {
+                  "n_unsafe": 80,
+                  "recall": 0.5375
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 22,
+                  "recall": 0.13636363636363635
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 12,
+                  "recall": 0.6666666666666666
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 236,
+                  "recall": 0.6186440677966102
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 516,
+                  "n_unsafe": 250,
+                  "n_safe": 266,
+                  "recall": 0.364,
+                  "sequence_fpr": 0.022556390977443608
+                },
+                "65-128": {
+                  "n": 415,
+                  "n_unsafe": 252,
+                  "n_safe": 163,
+                  "recall": 0.5357142857142857,
+                  "sequence_fpr": 0.049079754601226995
+                },
+                "129-256": {
+                  "n": 67,
+                  "n_unsafe": 46,
+                  "n_safe": 21,
+                  "recall": 0.717391304347826,
+                  "sequence_fpr": 0.19047619047619047
+                },
+                "257-512": {
+                  "n": 5,
+                  "n_unsafe": 3,
+                  "n_safe": 2,
+                  "recall": 0.3333333333333333,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "calibration": {
+              "n": 1001,
+              "n_safe": 438,
+              "n_unsafe": 563,
+              "roc_auc": 0.8612456101932731,
+              "average_precision": 0.8839543708936419,
+              "sequence_fpr": 0.04794520547945205,
+              "recall": 0.4955595026642984,
+              "precision": 0.93,
+              "f1": 0.6465816917728853,
+              "recall_at_budget": {
+                "32": 0.29484902309058614,
+                "64": 0.44404973357015987,
+                "128": 0.4955595026642984,
+                "256": 0.4955595026642984
+              },
+              "alert_coverage": 0.2997002997002997,
+              "n_detected_unsafe": 279,
+              "detected_alert_tokens_mean": 36.49820788530466,
+              "detected_alert_tokens_median": 32.0,
+              "normalized_alert_position_mean": 0.48472790143739125,
+              "confusion": {
+                "tp": 279,
+                "fp": 21,
+                "tn": 417,
+                "fn": 284
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 12,
+                  "recall": 0.4166666666666667
+                },
+                "child_abuse": {
+                  "n_unsafe": 3,
+                  "recall": 0.3333333333333333
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 38,
+                  "recall": 0.07894736842105263
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 93,
+                  "recall": 0.3548387096774194
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 57,
+                  "recall": 0.5789473684210527
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 80,
+                  "recall": 0.675
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 82,
+                  "recall": 0.3780487804878049
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 18,
+                  "recall": 0.3333333333333333
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 170,
+                  "recall": 0.4764705882352941
+                },
+                "privacy_violation": {
+                  "n_unsafe": 69,
+                  "recall": 0.5797101449275363
+                },
+                "self_harm": {
+                  "n_unsafe": 13,
+                  "recall": 0.5384615384615384
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 19,
+                  "recall": 0.2631578947368421
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 9,
+                  "recall": 0.6666666666666666
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 234,
+                  "recall": 0.6538461538461539
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 497,
+                  "n_unsafe": 237,
+                  "n_safe": 260,
+                  "recall": 0.4177215189873418,
+                  "sequence_fpr": 0.023076923076923078
+                },
+                "65-128": {
+                  "n": 421,
+                  "n_unsafe": 266,
+                  "n_safe": 155,
+                  "recall": 0.518796992481203,
+                  "sequence_fpr": 0.07096774193548387
+                },
+                "129-256": {
+                  "n": 80,
+                  "n_unsafe": 58,
+                  "n_safe": 22,
+                  "recall": 0.7068965517241379,
+                  "sequence_fpr": 0.18181818181818182
+                },
+                "257-512": {
+                  "n": 3,
+                  "n_unsafe": 2,
+                  "n_safe": 1,
+                  "recall": 0.5,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "test": {
+              "n": 3018,
+              "n_safe": 1286,
+              "n_unsafe": 1732,
+              "roc_auc": 0.8642347505019413,
+              "average_precision": 0.8996980775307659,
+              "sequence_fpr": 0.04354587869362364,
+              "recall": 0.48325635103926096,
+              "precision": 0.9372900335946248,
+              "f1": 0.6377142857142857,
+              "recall_at_budget": {
+                "32": 0.27424942263279445,
+                "64": 0.4382217090069284,
+                "128": 0.4821016166281755,
+                "256": 0.48325635103926096
+              },
+              "alert_coverage": 0.2958913187541418,
+              "n_detected_unsafe": 837,
+              "detected_alert_tokens_mean": 37.732377538829155,
+              "detected_alert_tokens_median": 32.0,
+              "normalized_alert_position_mean": 0.49092481110011416,
+              "confusion": {
+                "tp": 837,
+                "fp": 56,
+                "tn": 1230,
+                "fn": 895
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 44,
+                  "recall": 0.4318181818181818
+                },
+                "child_abuse": {
+                  "n_unsafe": 27,
+                  "recall": 0.7037037037037037
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 95,
+                  "recall": 0.08421052631578947
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 297,
+                  "recall": 0.3265993265993266
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 151,
+                  "recall": 0.6158940397350994
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 262,
+                  "recall": 0.7175572519083969
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 302,
+                  "recall": 0.4105960264900662
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 75,
+                  "recall": 0.32
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 607,
+                  "recall": 0.471169686985173
+                },
+                "privacy_violation": {
+                  "n_unsafe": 155,
+                  "recall": 0.5419354838709678
+                },
+                "self_harm": {
+                  "n_unsafe": 19,
+                  "recall": 0.5789473684210527
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 103,
+                  "recall": 0.22330097087378642
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 43,
+                  "recall": 0.6511627906976745
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 724,
+                  "recall": 0.6671270718232044
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 1459,
+                  "n_unsafe": 751,
+                  "n_safe": 708,
+                  "recall": 0.3382157123834887,
+                  "sequence_fpr": 0.014124293785310734
+                },
+                "65-128": {
+                  "n": 1289,
+                  "n_unsafe": 796,
+                  "n_safe": 493,
+                  "recall": 0.5728643216080402,
+                  "sequence_fpr": 0.07505070993914807
+                },
+                "129-256": {
+                  "n": 260,
+                  "n_unsafe": 178,
+                  "n_safe": 82,
+                  "recall": 0.6741573033707865,
+                  "sequence_fpr": 0.10975609756097561
+                },
+                "257-512": {
+                  "n": 10,
+                  "n_unsafe": 7,
+                  "n_safe": 3,
+                  "recall": 1.0,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "external": {
+              "n": 591,
+              "n_safe": 537,
+              "n_unsafe": 54,
+              "roc_auc": 0.8694737568108145,
+              "average_precision": 0.39548959265917016,
+              "sequence_fpr": 0.0223463687150838,
+              "recall": 0.24074074074074073,
+              "precision": 0.52,
+              "f1": 0.3291139240506329,
+              "recall_at_budget": {
+                "32": 0.018518518518518517,
+                "64": 0.037037037037037035,
+                "128": 0.14814814814814814,
+                "256": 0.2222222222222222
+              },
+              "alert_coverage": 0.04230118443316413,
+              "n_detected_unsafe": 13,
+              "detected_alert_tokens_mean": 119.38461538461539,
+              "detected_alert_tokens_median": 80.0,
+              "normalized_alert_position_mean": 0.3453097552400474,
+              "confusion": {
+                "tp": 13,
+                "fp": 12,
+                "tn": 525,
+                "fn": 41
+              },
+              "category_recall": {},
+              "length_strata": {
+                "1-64": {
+                  "n": 28,
+                  "n_unsafe": 1,
+                  "n_safe": 27,
+                  "recall": 0.0,
+                  "sequence_fpr": 0.0
+                },
+                "65-128": {
+                  "n": 187,
+                  "n_unsafe": 4,
+                  "n_safe": 183,
+                  "recall": 0.0,
+                  "sequence_fpr": 0.00546448087431694
+                },
+                "129-256": {
+                  "n": 181,
+                  "n_unsafe": 11,
+                  "n_safe": 170,
+                  "recall": 0.2727272727272727,
+                  "sequence_fpr": 0.0058823529411764705
+                },
+                "257-512": {
+                  "n": 195,
+                  "n_unsafe": 38,
+                  "n_safe": 157,
+                  "recall": 0.2631578947368421,
+                  "sequence_fpr": 0.06369426751592357
+                }
+              }
+            }
+          },
+          "train_seconds": 35.98875799999951,
+          "training_epochs": 5,
+          "detector_latency": {
+            "mode": "cached_feature_batch1_streaming_detector",
+            "device": "cpu",
+            "n_responses": 16,
+            "n_checkpoints": 140,
+            "checkpoint_ms_p50": 0.21569999989878852,
+            "checkpoint_ms_p95": 0.27404499887779804,
+            "checkpoint_ms_mean": 0.22667285699883774,
+            "online_offline_max_abs_score_error": 1.4901161193847656e-07,
+            "includes": "StandardScaler, host/device input transfer, causal detector forward and scalar readback",
+            "excludes": "backbone inference, tokenizer, PCA and dynamic feature extraction; no generation throughput claim"
+          }
+        },
+        "2026": {
+          "threshold": 0.968890905380249,
+          "calibration": {
+            "threshold": 0.968890905380249,
+            "comparison": ">",
+            "target_fpr": 0.05,
+            "n_safe": 438,
+            "allowed_false_alarms": 21,
+            "empirical_sequence_fpr": 0.04794520547945205,
+            "note": "Empirical calibration constraint; no population-level FPR guarantee is claimed.",
+            "model": "gru",
+            "seed": 2026,
+            "config_signature": "3d86e5c03537de7270f2c4ce21897c50d332d2b0eac05b37dc61213e1af8eea0",
+            "split": "calibration"
+          },
+          "splits": {
+            "dev": {
+              "n": 1003,
+              "n_safe": 452,
+              "n_unsafe": 551,
+              "roc_auc": 0.8636630101344298,
+              "average_precision": 0.8869982722098231,
+              "sequence_fpr": 0.05309734513274336,
+              "recall": 0.5553539019963702,
+              "precision": 0.9272727272727272,
+              "f1": 0.6946651532349603,
+              "recall_at_budget": {
+                "32": 0.3339382940108893,
+                "64": 0.515426497277677,
+                "128": 0.5499092558983666,
+                "256": 0.5535390199637024
+              },
+              "alert_coverage": 0.32901296111665007,
+              "n_detected_unsafe": 306,
+              "detected_alert_tokens_mean": 36.470588235294116,
+              "detected_alert_tokens_median": 32.0,
+              "normalized_alert_position_mean": 0.5144712420271805,
+              "confusion": {
+                "tp": 306,
+                "fp": 24,
+                "tn": 428,
+                "fn": 245
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 11,
+                  "recall": 0.5454545454545454
+                },
+                "child_abuse": {
+                  "n_unsafe": 2,
+                  "recall": 0.0
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 33,
+                  "recall": 0.12121212121212122
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 86,
+                  "recall": 0.45348837209302323
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 38,
+                  "recall": 0.7368421052631579
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 81,
+                  "recall": 0.7283950617283951
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 77,
+                  "recall": 0.5194805194805194
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 21,
+                  "recall": 0.47619047619047616
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 154,
+                  "recall": 0.525974025974026
+                },
+                "privacy_violation": {
+                  "n_unsafe": 80,
+                  "recall": 0.6125
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 22,
+                  "recall": 0.22727272727272727
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 12,
+                  "recall": 0.9166666666666666
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 236,
+                  "recall": 0.690677966101695
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 516,
+                  "n_unsafe": 250,
+                  "n_safe": 266,
+                  "recall": 0.46,
+                  "sequence_fpr": 0.03007518796992481
+                },
+                "65-128": {
+                  "n": 415,
+                  "n_unsafe": 252,
+                  "n_safe": 163,
+                  "recall": 0.6031746031746031,
+                  "sequence_fpr": 0.06134969325153374
+                },
+                "129-256": {
+                  "n": 67,
+                  "n_unsafe": 46,
+                  "n_safe": 21,
+                  "recall": 0.782608695652174,
+                  "sequence_fpr": 0.2857142857142857
+                },
+                "257-512": {
+                  "n": 5,
+                  "n_unsafe": 3,
+                  "n_safe": 2,
+                  "recall": 1.0,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "calibration": {
+              "n": 1001,
+              "n_safe": 438,
+              "n_unsafe": 563,
+              "roc_auc": 0.8665539307525729,
+              "average_precision": 0.8979587695661266,
+              "sequence_fpr": 0.04794520547945205,
+              "recall": 0.5825932504440497,
+              "precision": 0.9398280802292264,
+              "f1": 0.7192982456140351,
+              "recall_at_budget": {
+                "32": 0.35346358792184723,
+                "64": 0.5097690941385435,
+                "128": 0.5772646536412078,
+                "256": 0.5825932504440497
+              },
+              "alert_coverage": 0.34865134865134867,
+              "n_detected_unsafe": 328,
+              "detected_alert_tokens_mean": 37.35670731707317,
+              "detected_alert_tokens_median": 32.0,
+              "normalized_alert_position_mean": 0.4863593998192482,
+              "confusion": {
+                "tp": 328,
+                "fp": 21,
+                "tn": 417,
+                "fn": 235
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 12,
+                  "recall": 0.5833333333333334
+                },
+                "child_abuse": {
+                  "n_unsafe": 3,
+                  "recall": 0.6666666666666666
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 38,
+                  "recall": 0.15789473684210525
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 93,
+                  "recall": 0.4838709677419355
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 57,
+                  "recall": 0.6491228070175439
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 80,
+                  "recall": 0.7
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 82,
+                  "recall": 0.5365853658536586
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 18,
+                  "recall": 0.3888888888888889
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 170,
+                  "recall": 0.5588235294117647
+                },
+                "privacy_violation": {
+                  "n_unsafe": 69,
+                  "recall": 0.6811594202898551
+                },
+                "self_harm": {
+                  "n_unsafe": 13,
+                  "recall": 0.6923076923076923
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 19,
+                  "recall": 0.47368421052631576
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 9,
+                  "recall": 0.6666666666666666
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 234,
+                  "recall": 0.7606837606837606
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 497,
+                  "n_unsafe": 237,
+                  "n_safe": 260,
+                  "recall": 0.47257383966244726,
+                  "sequence_fpr": 0.019230769230769232
+                },
+                "65-128": {
+                  "n": 421,
+                  "n_unsafe": 266,
+                  "n_safe": 155,
+                  "recall": 0.6165413533834586,
+                  "sequence_fpr": 0.08387096774193549
+                },
+                "129-256": {
+                  "n": 80,
+                  "n_unsafe": 58,
+                  "n_safe": 22,
+                  "recall": 0.8620689655172413,
+                  "sequence_fpr": 0.13636363636363635
+                },
+                "257-512": {
+                  "n": 3,
+                  "n_unsafe": 2,
+                  "n_safe": 1,
+                  "recall": 1.0,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "test": {
+              "n": 3018,
+              "n_safe": 1286,
+              "n_unsafe": 1732,
+              "roc_auc": 0.8567745466365442,
+              "average_precision": 0.8912566080344065,
+              "sequence_fpr": 0.06765163297045101,
+              "recall": 0.5513856812933026,
+              "precision": 0.9165067178502879,
+              "f1": 0.6885364095169431,
+              "recall_at_budget": {
+                "32": 0.32505773672055427,
+                "64": 0.49191685912240185,
+                "128": 0.5473441108545035,
+                "256": 0.5513856812933026
+              },
+              "alert_coverage": 0.3452617627567926,
+              "n_detected_unsafe": 955,
+              "detected_alert_tokens_mean": 37.72460732984293,
+              "detected_alert_tokens_median": 32.0,
+              "normalized_alert_position_mean": 0.4950805642922445,
+              "confusion": {
+                "tp": 955,
+                "fp": 87,
+                "tn": 1199,
+                "fn": 777
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 44,
+                  "recall": 0.5
+                },
+                "child_abuse": {
+                  "n_unsafe": 27,
+                  "recall": 0.6666666666666666
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 95,
+                  "recall": 0.1368421052631579
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 297,
+                  "recall": 0.47474747474747475
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 151,
+                  "recall": 0.695364238410596
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 262,
+                  "recall": 0.7862595419847328
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 302,
+                  "recall": 0.49337748344370863
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 75,
+                  "recall": 0.3333333333333333
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 607,
+                  "recall": 0.5453047775947282
+                },
+                "privacy_violation": {
+                  "n_unsafe": 155,
+                  "recall": 0.5741935483870968
+                },
+                "self_harm": {
+                  "n_unsafe": 19,
+                  "recall": 0.7368421052631579
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 103,
+                  "recall": 0.32038834951456313
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 43,
+                  "recall": 0.7209302325581395
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 724,
+                  "recall": 0.7113259668508287
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 1459,
+                  "n_unsafe": 751,
+                  "n_safe": 708,
+                  "recall": 0.3981358189081225,
+                  "sequence_fpr": 0.02824858757062147
+                },
+                "65-128": {
+                  "n": 1289,
+                  "n_unsafe": 796,
+                  "n_safe": 493,
+                  "recall": 0.6407035175879398,
+                  "sequence_fpr": 0.10344827586206896
+                },
+                "129-256": {
+                  "n": 260,
+                  "n_unsafe": 178,
+                  "n_safe": 82,
+                  "recall": 0.7808988764044944,
+                  "sequence_fpr": 0.18292682926829268
+                },
+                "257-512": {
+                  "n": 10,
+                  "n_unsafe": 7,
+                  "n_safe": 3,
+                  "recall": 1.0,
+                  "sequence_fpr": 0.3333333333333333
+                }
+              }
+            },
+            "external": {
+              "n": 591,
+              "n_safe": 537,
+              "n_unsafe": 54,
+              "roc_auc": 0.8587833643699565,
+              "average_precision": 0.3655248436603568,
+              "sequence_fpr": 0.037243947858473,
+              "recall": 0.35185185185185186,
+              "precision": 0.48717948717948717,
+              "f1": 0.40860215053763443,
+              "recall_at_budget": {
+                "32": 0.05555555555555555,
+                "64": 0.1111111111111111,
+                "128": 0.2037037037037037,
+                "256": 0.3333333333333333
+              },
+              "alert_coverage": 0.06598984771573604,
+              "n_detected_unsafe": 19,
+              "detected_alert_tokens_mean": 121.6842105263158,
+              "detected_alert_tokens_median": 104.0,
+              "normalized_alert_position_mean": 0.37946408897039036,
+              "confusion": {
+                "tp": 19,
+                "fp": 20,
+                "tn": 517,
+                "fn": 35
+              },
+              "category_recall": {},
+              "length_strata": {
+                "1-64": {
+                  "n": 28,
+                  "n_unsafe": 1,
+                  "n_safe": 27,
+                  "recall": 0.0,
+                  "sequence_fpr": 0.0
+                },
+                "65-128": {
+                  "n": 187,
+                  "n_unsafe": 4,
+                  "n_safe": 183,
+                  "recall": 0.25,
+                  "sequence_fpr": 0.01092896174863388
+                },
+                "129-256": {
+                  "n": 181,
+                  "n_unsafe": 11,
+                  "n_safe": 170,
+                  "recall": 0.36363636363636365,
+                  "sequence_fpr": 0.011764705882352941
+                },
+                "257-512": {
+                  "n": 195,
+                  "n_unsafe": 38,
+                  "n_safe": 157,
+                  "recall": 0.3684210526315789,
+                  "sequence_fpr": 0.10191082802547771
+                }
+              }
+            }
+          },
+          "train_seconds": 33.76536290000149,
+          "training_epochs": 6,
+          "detector_latency": {
+            "mode": "cached_feature_batch1_streaming_detector",
+            "device": "cpu",
+            "n_responses": 16,
+            "n_checkpoints": 140,
+            "checkpoint_ms_p50": 0.25645000096119475,
+            "checkpoint_ms_p95": 0.5500949982888411,
+            "checkpoint_ms_mean": 0.2754492856963354,
+            "online_offline_max_abs_score_error": 4.172325134277344e-07,
+            "includes": "StandardScaler, host/device input transfer, causal detector forward and scalar readback",
+            "excludes": "backbone inference, tokenizer, PCA and dynamic feature extraction; no generation throughput claim"
+          }
+        },
+        "42": {
+          "threshold": 0.924945592880249,
+          "calibration": {
+            "threshold": 0.924945592880249,
+            "comparison": ">",
+            "target_fpr": 0.05,
+            "n_safe": 438,
+            "allowed_false_alarms": 21,
+            "empirical_sequence_fpr": 0.04794520547945205,
+            "note": "Empirical calibration constraint; no population-level FPR guarantee is claimed.",
+            "model": "gru",
+            "seed": 42,
+            "config_signature": "3d86e5c03537de7270f2c4ce21897c50d332d2b0eac05b37dc61213e1af8eea0",
+            "split": "calibration"
+          },
+          "splits": {
+            "dev": {
+              "n": 1003,
+              "n_safe": 452,
+              "n_unsafe": 551,
+              "roc_auc": 0.8594550535631112,
+              "average_precision": 0.8922490791838323,
+              "sequence_fpr": 0.022123893805309734,
+              "recall": 0.4809437386569873,
+              "precision": 0.9636363636363636,
+              "f1": 0.6416464891041163,
+              "recall_at_budget": {
+                "32": 0.2849364791288566,
+                "64": 0.43738656987295826,
+                "128": 0.47731397459165154,
+                "256": 0.4809437386569873
+              },
+              "alert_coverage": 0.2741774675972084,
+              "n_detected_unsafe": 265,
+              "detected_alert_tokens_mean": 36.44150943396227,
+              "detected_alert_tokens_median": 32.0,
+              "normalized_alert_position_mean": 0.5135902815433027,
+              "confusion": {
+                "tp": 265,
+                "fp": 10,
+                "tn": 442,
+                "fn": 286
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 11,
+                  "recall": 0.45454545454545453
+                },
+                "child_abuse": {
+                  "n_unsafe": 2,
+                  "recall": 0.0
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 33,
+                  "recall": 0.06060606060606061
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 86,
+                  "recall": 0.4186046511627907
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 38,
+                  "recall": 0.6842105263157895
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 81,
+                  "recall": 0.6419753086419753
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 77,
+                  "recall": 0.4675324675324675
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 21,
+                  "recall": 0.3333333333333333
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 154,
+                  "recall": 0.44155844155844154
+                },
+                "privacy_violation": {
+                  "n_unsafe": 80,
+                  "recall": 0.6125
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 22,
+                  "recall": 0.09090909090909091
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 12,
+                  "recall": 0.8333333333333334
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 236,
+                  "recall": 0.6101694915254238
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 516,
+                  "n_unsafe": 250,
+                  "n_safe": 266,
+                  "recall": 0.396,
+                  "sequence_fpr": 0.015037593984962405
+                },
+                "65-128": {
+                  "n": 415,
+                  "n_unsafe": 252,
+                  "n_safe": 163,
+                  "recall": 0.5317460317460317,
+                  "sequence_fpr": 0.018404907975460124
+                },
+                "129-256": {
+                  "n": 67,
+                  "n_unsafe": 46,
+                  "n_safe": 21,
+                  "recall": 0.6739130434782609,
+                  "sequence_fpr": 0.14285714285714285
+                },
+                "257-512": {
+                  "n": 5,
+                  "n_unsafe": 3,
+                  "n_safe": 2,
+                  "recall": 0.3333333333333333,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "calibration": {
+              "n": 1001,
+              "n_safe": 438,
+              "n_unsafe": 563,
+              "roc_auc": 0.8562110189217906,
+              "average_precision": 0.886647365705646,
+              "sequence_fpr": 0.04794520547945205,
+              "recall": 0.4635879218472469,
+              "precision": 0.925531914893617,
+              "f1": 0.6177514792899408,
+              "recall_at_budget": {
+                "32": 0.27353463587921845,
+                "64": 0.3960923623445826,
+                "128": 0.46003552397868563,
+                "256": 0.4635879218472469
+              },
+              "alert_coverage": 0.2817182817182817,
+              "n_detected_unsafe": 261,
+              "detected_alert_tokens_mean": 38.7088122605364,
+              "detected_alert_tokens_median": 32.0,
+              "normalized_alert_position_mean": 0.4913358034633542,
+              "confusion": {
+                "tp": 261,
+                "fp": 21,
+                "tn": 417,
+                "fn": 302
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 12,
+                  "recall": 0.25
+                },
+                "child_abuse": {
+                  "n_unsafe": 3,
+                  "recall": 0.0
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 38,
+                  "recall": 0.05263157894736842
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 93,
+                  "recall": 0.3655913978494624
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 57,
+                  "recall": 0.5614035087719298
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 80,
+                  "recall": 0.6375
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 82,
+                  "recall": 0.3902439024390244
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 18,
+                  "recall": 0.3888888888888889
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 170,
+                  "recall": 0.45294117647058824
+                },
+                "privacy_violation": {
+                  "n_unsafe": 69,
+                  "recall": 0.5507246376811594
+                },
+                "self_harm": {
+                  "n_unsafe": 13,
+                  "recall": 0.46153846153846156
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 19,
+                  "recall": 0.3684210526315789
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 9,
+                  "recall": 0.5555555555555556
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 234,
+                  "recall": 0.6324786324786325
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 497,
+                  "n_unsafe": 237,
+                  "n_safe": 260,
+                  "recall": 0.35443037974683544,
+                  "sequence_fpr": 0.019230769230769232
+                },
+                "65-128": {
+                  "n": 421,
+                  "n_unsafe": 266,
+                  "n_safe": 155,
+                  "recall": 0.5075187969924813,
+                  "sequence_fpr": 0.07741935483870968
+                },
+                "129-256": {
+                  "n": 80,
+                  "n_unsafe": 58,
+                  "n_safe": 22,
+                  "recall": 0.6896551724137931,
+                  "sequence_fpr": 0.18181818181818182
+                },
+                "257-512": {
+                  "n": 3,
+                  "n_unsafe": 2,
+                  "n_safe": 1,
+                  "recall": 1.0,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "test": {
+              "n": 3018,
+              "n_safe": 1286,
+              "n_unsafe": 1732,
+              "roc_auc": 0.8615261530283493,
+              "average_precision": 0.8983994830069536,
+              "sequence_fpr": 0.034992223950233284,
+              "recall": 0.4607390300230947,
+              "precision": 0.9466192170818505,
+              "f1": 0.6198058252427184,
+              "recall_at_budget": {
+                "32": 0.26096997690531176,
+                "64": 0.4105080831408776,
+                "128": 0.45958429561200925,
+                "256": 0.4607390300230947
+              },
+              "alert_coverage": 0.279324055666004,
+              "n_detected_unsafe": 798,
+              "detected_alert_tokens_mean": 37.24812030075188,
+              "detected_alert_tokens_median": 32.0,
+              "normalized_alert_position_mean": 0.48909149003335806,
+              "confusion": {
+                "tp": 798,
+                "fp": 45,
+                "tn": 1241,
+                "fn": 934
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 44,
+                  "recall": 0.36363636363636365
+                },
+                "child_abuse": {
+                  "n_unsafe": 27,
+                  "recall": 0.5925925925925926
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 95,
+                  "recall": 0.07368421052631578
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 297,
+                  "recall": 0.32323232323232326
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 151,
+                  "recall": 0.5894039735099338
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 262,
+                  "recall": 0.7137404580152672
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 302,
+                  "recall": 0.4105960264900662
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 75,
+                  "recall": 0.26666666666666666
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 607,
+                  "recall": 0.45304777594728174
+                },
+                "privacy_violation": {
+                  "n_unsafe": 155,
+                  "recall": 0.5483870967741935
+                },
+                "self_harm": {
+                  "n_unsafe": 19,
+                  "recall": 0.5263157894736842
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 103,
+                  "recall": 0.22330097087378642
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 43,
+                  "recall": 0.5348837209302325
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 724,
+                  "recall": 0.6132596685082873
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 1459,
+                  "n_unsafe": 751,
+                  "n_safe": 708,
+                  "recall": 0.3355525965379494,
+                  "sequence_fpr": 0.01694915254237288
+                },
+                "65-128": {
+                  "n": 1289,
+                  "n_unsafe": 796,
+                  "n_safe": 493,
+                  "recall": 0.5414572864321608,
+                  "sequence_fpr": 0.05070993914807302
+                },
+                "129-256": {
+                  "n": 260,
+                  "n_unsafe": 178,
+                  "n_safe": 82,
+                  "recall": 0.6179775280898876,
+                  "sequence_fpr": 0.0975609756097561
+                },
+                "257-512": {
+                  "n": 10,
+                  "n_unsafe": 7,
+                  "n_safe": 3,
+                  "recall": 0.7142857142857143,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "external": {
+              "n": 591,
+              "n_safe": 537,
+              "n_unsafe": 54,
+              "roc_auc": 0.8624732740188978,
+              "average_precision": 0.3905675614295311,
+              "sequence_fpr": 0.0260707635009311,
+              "recall": 0.24074074074074073,
+              "precision": 0.48148148148148145,
+              "f1": 0.32098765432098764,
+              "recall_at_budget": {
+                "32": 0.037037037037037035,
+                "64": 0.07407407407407407,
+                "128": 0.16666666666666666,
+                "256": 0.2222222222222222
+              },
+              "alert_coverage": 0.04568527918781726,
+              "n_detected_unsafe": 13,
+              "detected_alert_tokens_mean": 109.53846153846153,
+              "detected_alert_tokens_median": 80.0,
+              "normalized_alert_position_mean": 0.29494794029568777,
+              "confusion": {
+                "tp": 13,
+                "fp": 14,
+                "tn": 523,
+                "fn": 41
+              },
+              "category_recall": {},
+              "length_strata": {
+                "1-64": {
+                  "n": 28,
+                  "n_unsafe": 1,
+                  "n_safe": 27,
+                  "recall": 0.0,
+                  "sequence_fpr": 0.0
+                },
+                "65-128": {
+                  "n": 187,
+                  "n_unsafe": 4,
+                  "n_safe": 183,
+                  "recall": 0.0,
+                  "sequence_fpr": 0.0
+                },
+                "129-256": {
+                  "n": 181,
+                  "n_unsafe": 11,
+                  "n_safe": 170,
+                  "recall": 0.09090909090909091,
+                  "sequence_fpr": 0.0058823529411764705
+                },
+                "257-512": {
+                  "n": 195,
+                  "n_unsafe": 38,
+                  "n_safe": 157,
+                  "recall": 0.3157894736842105,
+                  "sequence_fpr": 0.08280254777070063
+                }
+              }
+            }
+          },
+          "train_seconds": 25.637813900000765,
+          "training_epochs": 4,
+          "detector_latency": {
+            "mode": "cached_feature_batch1_streaming_detector",
+            "device": "cpu",
+            "n_responses": 16,
+            "n_checkpoints": 140,
+            "checkpoint_ms_p50": 0.21695000032195821,
+            "checkpoint_ms_p95": 0.26070000094478013,
+            "checkpoint_ms_mean": 0.22607499985107488,
+            "online_offline_max_abs_score_error": 1.4901161193847656e-07,
+            "includes": "StandardScaler, host/device input transfer, causal detector forward and scalar readback",
+            "excludes": "backbone inference, tokenizer, PCA and dynamic feature extraction; no generation throughput claim"
+          }
+        }
+      },
+      "aggregate": {
+        "calibration": {
+          "n": {
+            "mean": 1001.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_safe": {
+            "mean": 438.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_unsafe": {
+            "mean": 563.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "roc_auc": {
+            "mean": 0.8613368532892123,
+            "std": 0.005172059576392316,
+            "n_seeds": 3
+          },
+          "average_precision": {
+            "mean": 0.889520168721805,
+            "std": 0.007431052645602208,
+            "n_seeds": 3
+          },
+          "sequence_fpr": {
+            "mean": 0.04794520547945205,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall": {
+            "mean": 0.5139135583185317,
+            "std": 0.06158912710720355,
+            "n_seeds": 3
+          },
+          "precision": {
+            "mean": 0.9317866650409478,
+            "std": 0.007313632121058495,
+            "n_seeds": 3
+          },
+          "f1": {
+            "mean": 0.6612104722256203,
+            "std": 0.05233008074588456,
+            "n_seeds": 3
+          },
+          "recall_at_budget.32": {
+            "mean": 0.3072824156305506,
+            "std": 0.04138962770064314,
+            "n_seeds": 3
+          },
+          "recall_at_budget.64": {
+            "mean": 0.4499703966844287,
+            "std": 0.057069173172769286,
+            "n_seeds": 3
+          },
+          "recall_at_budget.128": {
+            "mean": 0.5109532267613973,
+            "std": 0.060111498621655685,
+            "n_seeds": 3
+          },
+          "recall_at_budget.256": {
+            "mean": 0.5139135583185317,
+            "std": 0.06158912710720355,
+            "n_seeds": 3
+          },
+          "alert_coverage": {
+            "mean": 0.31002331002331,
+            "std": 0.03464003852283277,
+            "n_seeds": 3
+          },
+          "n_detected_unsafe": {
+            "mean": 289.3333333333333,
+            "std": 34.6746785613556,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_mean": {
+            "mean": 37.521242487638084,
+            "std": 1.1144490983050968,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_median": {
+            "mean": 32.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "normalized_alert_position_mean": {
+            "mean": 0.48747436823999785,
+            "std": 0.0034421589490657043,
+            "n_seeds": 3
+          },
+          "confusion.tp": {
+            "mean": 289.3333333333333,
+            "std": 34.6746785613556,
+            "n_seeds": 3
+          },
+          "confusion.fp": {
+            "mean": 21.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.tn": {
+            "mean": 417.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.fn": {
+            "mean": 273.6666666666667,
+            "std": 34.6746785613556,
+            "n_seeds": 3
+          },
+          "category_recall.animal_abuse.n_unsafe": {
+            "mean": 12.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.animal_abuse.recall": {
+            "mean": 0.4166666666666667,
+            "std": 0.16666666666666669,
+            "n_seeds": 3
+          },
+          "category_recall.child_abuse.n_unsafe": {
+            "mean": 3.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.child_abuse.recall": {
+            "mean": 0.3333333333333333,
+            "std": 0.3333333333333333,
+            "n_seeds": 3
+          },
+          "category_recall.controversial_topics,politics.n_unsafe": {
+            "mean": 38.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.controversial_topics,politics.recall": {
+            "mean": 0.09649122807017545,
+            "std": 0.05478068419647717,
+            "n_seeds": 3
+          },
+          "category_recall.discrimination,stereotype,injustice.n_unsafe": {
+            "mean": 93.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.discrimination,stereotype,injustice.recall": {
+            "mean": 0.4014336917562724,
+            "std": 0.07159492600515475,
+            "n_seeds": 3
+          },
+          "category_recall.drug_abuse,weapons,banned_substance.n_unsafe": {
+            "mean": 57.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.drug_abuse,weapons,banned_substance.recall": {
+            "mean": 0.5964912280701754,
+            "std": 0.046416689667799854,
+            "n_seeds": 3
+          },
+          "category_recall.financial_crime,property_crime,theft.n_unsafe": {
+            "mean": 80.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.financial_crime,property_crime,theft.recall": {
+            "mean": 0.6708333333333334,
+            "std": 0.0314576434802948,
+            "n_seeds": 3
+          },
+          "category_recall.hate_speech,offensive_language.n_unsafe": {
+            "mean": 82.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.hate_speech,offensive_language.recall": {
+            "mean": 0.43495934959349597,
+            "std": 0.08822168461061264,
+            "n_seeds": 3
+          },
+          "category_recall.misinformation_regarding_ethics,laws_and_safety.n_unsafe": {
+            "mean": 18.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.misinformation_regarding_ethics,laws_and_safety.recall": {
+            "mean": 0.3703703703703704,
+            "std": 0.03207501495497923,
+            "n_seeds": 3
+          },
+          "category_recall.non_violent_unethical_behavior.n_unsafe": {
+            "mean": 170.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.non_violent_unethical_behavior.recall": {
+            "mean": 0.496078431372549,
+            "std": 0.05559783089708952,
+            "n_seeds": 3
+          },
+          "category_recall.privacy_violation.n_unsafe": {
+            "mean": 69.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.privacy_violation.recall": {
+            "mean": 0.6038647342995169,
+            "std": 0.06849008153989289,
+            "n_seeds": 3
+          },
+          "category_recall.self_harm.n_unsafe": {
+            "mean": 13.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.self_harm.recall": {
+            "mean": 0.5641025641025642,
+            "std": 0.11750194089630356,
+            "n_seeds": 3
+          },
+          "category_recall.sexually_explicit,adult_content.n_unsafe": {
+            "mean": 19.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.sexually_explicit,adult_content.recall": {
+            "mean": 0.3684210526315789,
+            "std": 0.10526315789473684,
+            "n_seeds": 3
+          },
+          "category_recall.terrorism,organized_crime.n_unsafe": {
+            "mean": 9.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.terrorism,organized_crime.recall": {
+            "mean": 0.6296296296296297,
+            "std": 0.06415002990995838,
+            "n_seeds": 3
+          },
+          "category_recall.violence,aiding_and_abetting,incitement.n_unsafe": {
+            "mean": 234.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.violence,aiding_and_abetting,incitement.recall": {
+            "mean": 0.6823361823361823,
+            "std": 0.06868697123214354,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n": {
+            "mean": 497.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_unsafe": {
+            "mean": 237.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_safe": {
+            "mean": 260.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.recall": {
+            "mean": 0.41490857946554155,
+            "std": 0.05912193968209199,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.sequence_fpr": {
+            "mean": 0.020512820512820513,
+            "std": 0.0022205779584216377,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n": {
+            "mean": 421.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_unsafe": {
+            "mean": 266.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_safe": {
+            "mean": 155.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.recall": {
+            "mean": 0.5476190476190477,
+            "std": 0.05995425420504099,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.sequence_fpr": {
+            "mean": 0.07741935483870968,
+            "std": 0.006451612903225809,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n": {
+            "mean": 80.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_unsafe": {
+            "mean": 58.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_safe": {
+            "mean": 22.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.recall": {
+            "mean": 0.7528735632183908,
+            "std": 0.09495811288424309,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.sequence_fpr": {
+            "mean": 0.16666666666666666,
+            "std": 0.02624319405407391,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n": {
+            "mean": 3.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_unsafe": {
+            "mean": 2.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_safe": {
+            "mean": 1.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.recall": {
+            "mean": 0.8333333333333334,
+            "std": 0.28867513459481287,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.sequence_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "dev": {
+          "n": {
+            "mean": 1003.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_safe": {
+            "mean": 452.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_unsafe": {
+            "mean": 551.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "roc_auc": {
+            "mean": 0.8581581356503863,
+            "std": 0.006254998759638447,
+            "n_seeds": 3
+          },
+          "average_precision": {
+            "mean": 0.8878550738254604,
+            "std": 0.004034426998693659,
+            "n_seeds": 3
+          },
+          "sequence_fpr": {
+            "mean": 0.03834808259587021,
+            "std": 0.015539312319841798,
+            "n_seeds": 3
+          },
+          "recall": {
+            "mean": 0.5027223230490018,
+            "std": 0.045805551593916374,
+            "n_seeds": 3
+          },
+          "precision": {
+            "mean": 0.942053629823414,
+            "std": 0.01911222629069982,
+            "n_seeds": 3
+          },
+          "f1": {
+            "mean": 0.6545244678323661,
+            "std": 0.035499099537358934,
+            "n_seeds": 3
+          },
+          "recall_at_budget.32": {
+            "mean": 0.29824561403508776,
+            "std": 0.031241987498306988,
+            "n_seeds": 3
+          },
+          "recall_at_budget.64": {
+            "mean": 0.45856019358741684,
+            "std": 0.04977984652672889,
+            "n_seeds": 3
+          },
+          "recall_at_budget.128": {
+            "mean": 0.49969751966122206,
+            "std": 0.04356977030860456,
+            "n_seeds": 3
+          },
+          "recall_at_budget.256": {
+            "mean": 0.5021173623714458,
+            "std": 0.044763002380365215,
+            "n_seeds": 3
+          },
+          "alert_coverage": {
+            "mean": 0.29345297441010304,
+            "std": 0.0308321431534569,
+            "n_seeds": 3
+          },
+          "n_detected_unsafe": {
+            "mean": 277.0,
+            "std": 25.238858928247925,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_mean": {
+            "mean": 36.69505819744443,
+            "std": 0.4142316027456179,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_median": {
+            "mean": 32.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "normalized_alert_position_mean": {
+            "mean": 0.5130097699336141,
+            "std": 0.0018224422972505407,
+            "n_seeds": 3
+          },
+          "confusion.tp": {
+            "mean": 277.0,
+            "std": 25.238858928247925,
+            "n_seeds": 3
+          },
+          "confusion.fp": {
+            "mean": 17.333333333333332,
+            "std": 7.023769168568492,
+            "n_seeds": 3
+          },
+          "confusion.tn": {
+            "mean": 434.6666666666667,
+            "std": 7.023769168568493,
+            "n_seeds": 3
+          },
+          "confusion.fn": {
+            "mean": 274.0,
+            "std": 25.238858928247925,
+            "n_seeds": 3
+          },
+          "category_recall.animal_abuse.n_unsafe": {
+            "mean": 11.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.animal_abuse.recall": {
+            "mean": 0.48484848484848486,
+            "std": 0.052486388108147784,
+            "n_seeds": 3
+          },
+          "category_recall.child_abuse.n_unsafe": {
+            "mean": 2.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.child_abuse.recall": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.controversial_topics,politics.n_unsafe": {
+            "mean": 33.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.controversial_topics,politics.recall": {
+            "mean": 0.0707070707070707,
+            "std": 0.04628864338339233,
+            "n_seeds": 3
+          },
+          "category_recall.discrimination,stereotype,injustice.n_unsafe": {
+            "mean": 86.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.discrimination,stereotype,injustice.recall": {
+            "mean": 0.40310077519379844,
+            "std": 0.059669784179614924,
+            "n_seeds": 3
+          },
+          "category_recall.drug_abuse,weapons,banned_substance.n_unsafe": {
+            "mean": 38.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.drug_abuse,weapons,banned_substance.recall": {
+            "mean": 0.7017543859649122,
+            "std": 0.030386856273138165,
+            "n_seeds": 3
+          },
+          "category_recall.financial_crime,property_crime,theft.n_unsafe": {
+            "mean": 81.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.financial_crime,property_crime,theft.recall": {
+            "mean": 0.6790123456790124,
+            "std": 0.044512978709431994,
+            "n_seeds": 3
+          },
+          "category_recall.hate_speech,offensive_language.n_unsafe": {
+            "mean": 77.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.hate_speech,offensive_language.recall": {
+            "mean": 0.4761904761904761,
+            "std": 0.03967598004290769,
+            "n_seeds": 3
+          },
+          "category_recall.misinformation_regarding_ethics,laws_and_safety.n_unsafe": {
+            "mean": 21.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.misinformation_regarding_ethics,laws_and_safety.recall": {
+            "mean": 0.3968253968253968,
+            "std": 0.07273929674533079,
+            "n_seeds": 3
+          },
+          "category_recall.non_violent_unethical_behavior.n_unsafe": {
+            "mean": 154.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.non_violent_unethical_behavior.recall": {
+            "mean": 0.474025974025974,
+            "std": 0.04545454545454547,
+            "n_seeds": 3
+          },
+          "category_recall.privacy_violation.n_unsafe": {
+            "mean": 80.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.privacy_violation.recall": {
+            "mean": 0.5875,
+            "std": 0.04330127018922197,
+            "n_seeds": 3
+          },
+          "category_recall.sexually_explicit,adult_content.n_unsafe": {
+            "mean": 22.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.sexually_explicit,adult_content.recall": {
+            "mean": 0.15151515151515152,
+            "std": 0.06943296507508848,
+            "n_seeds": 3
+          },
+          "category_recall.terrorism,organized_crime.n_unsafe": {
+            "mean": 12.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.terrorism,organized_crime.recall": {
+            "mean": 0.8055555555555555,
+            "std": 0.1272937693043289,
+            "n_seeds": 3
+          },
+          "category_recall.violence,aiding_and_abetting,incitement.n_unsafe": {
+            "mean": 236.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.violence,aiding_and_abetting,incitement.recall": {
+            "mean": 0.6398305084745762,
+            "std": 0.04423858690216336,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n": {
+            "mean": 516.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_unsafe": {
+            "mean": 250.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_safe": {
+            "mean": 266.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.recall": {
+            "mean": 0.40666666666666673,
+            "std": 0.048880807412862305,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.sequence_fpr": {
+            "mean": 0.022556390977443608,
+            "std": 0.007518796992481203,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n": {
+            "mean": 415.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_unsafe": {
+            "mean": 252.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_safe": {
+            "mean": 163.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.recall": {
+            "mean": 0.5568783068783069,
+            "std": 0.04014283308331617,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.sequence_fpr": {
+            "mean": 0.04294478527607362,
+            "std": 0.022119946475239197,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n": {
+            "mean": 67.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_unsafe": {
+            "mean": 46.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_safe": {
+            "mean": 21.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.recall": {
+            "mean": 0.7246376811594203,
+            "std": 0.054708945183121395,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.sequence_fpr": {
+            "mean": 0.20634920634920637,
+            "std": 0.07273929674533079,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n": {
+            "mean": 5.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_unsafe": {
+            "mean": 3.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_safe": {
+            "mean": 2.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.recall": {
+            "mean": 0.5555555555555555,
+            "std": 0.3849001794597505,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.sequence_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "external": {
+          "n": {
+            "mean": 591.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_safe": {
+            "mean": 537.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_unsafe": {
+            "mean": 54.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "roc_auc": {
+            "mean": 0.8635767983998895,
+            "std": 0.0054299583036586,
+            "n_seeds": 3
+          },
+          "average_precision": {
+            "mean": 0.38386066591635276,
+            "std": 0.016068863718663833,
+            "n_seeds": 3
+          },
+          "sequence_fpr": {
+            "mean": 0.028553693358162633,
+            "std": 0.007752945994287274,
+            "n_seeds": 3
+          },
+          "recall": {
+            "mean": 0.27777777777777773,
+            "std": 0.06415002990995843,
+            "n_seeds": 3
+          },
+          "precision": {
+            "mean": 0.49622032288698953,
+            "std": 0.020789939873239217,
+            "n_seeds": 3
+          },
+          "f1": {
+            "mean": 0.3529012429697517,
+            "std": 0.04840921805652414,
+            "n_seeds": 3
+          },
+          "recall_at_budget.32": {
+            "mean": 0.037037037037037035,
+            "std": 0.018518518518518517,
+            "n_seeds": 3
+          },
+          "recall_at_budget.64": {
+            "mean": 0.07407407407407407,
+            "std": 0.037037037037037035,
+            "n_seeds": 3
+          },
+          "recall_at_budget.128": {
+            "mean": 0.1728395061728395,
+            "std": 0.028287504289850864,
+            "n_seeds": 3
+          },
+          "recall_at_budget.256": {
+            "mean": 0.25925925925925924,
+            "std": 0.06415002990995841,
+            "n_seeds": 3
+          },
+          "alert_coverage": {
+            "mean": 0.05132543711223914,
+            "std": 0.012811975963452396,
+            "n_seeds": 3
+          },
+          "n_detected_unsafe": {
+            "mean": 15.0,
+            "std": 3.4641016151377544,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_mean": {
+            "mean": 116.86909581646425,
+            "std": 6.4517969312668395,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_median": {
+            "mean": 88.0,
+            "std": 13.856406460551018,
+            "n_seeds": 3
+          },
+          "normalized_alert_position_mean": {
+            "mean": 0.3399072615020418,
+            "std": 0.042516291590906655,
+            "n_seeds": 3
+          },
+          "confusion.tp": {
+            "mean": 15.0,
+            "std": 3.4641016151377544,
+            "n_seeds": 3
+          },
+          "confusion.fp": {
+            "mean": 15.333333333333334,
+            "std": 4.163331998932265,
+            "n_seeds": 3
+          },
+          "confusion.tn": {
+            "mean": 521.6666666666666,
+            "std": 4.163331998932265,
+            "n_seeds": 3
+          },
+          "confusion.fn": {
+            "mean": 39.0,
+            "std": 3.4641016151377544,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n": {
+            "mean": 28.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_unsafe": {
+            "mean": 1.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_safe": {
+            "mean": 27.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.recall": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.sequence_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n": {
+            "mean": 187.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_unsafe": {
+            "mean": 4.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_safe": {
+            "mean": 183.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.recall": {
+            "mean": 0.08333333333333333,
+            "std": 0.14433756729740646,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.sequence_fpr": {
+            "mean": 0.00546448087431694,
+            "std": 0.00546448087431694,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n": {
+            "mean": 181.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_unsafe": {
+            "mean": 11.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_safe": {
+            "mean": 170.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.recall": {
+            "mean": 0.24242424242424243,
+            "std": 0.13886593015017698,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.sequence_fpr": {
+            "mean": 0.00784313725490196,
+            "std": 0.003396178054056622,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n": {
+            "mean": 195.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_unsafe": {
+            "mean": 38.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_safe": {
+            "mean": 157.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.recall": {
+            "mean": 0.3157894736842105,
+            "std": 0.05263157894736842,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.sequence_fpr": {
+            "mean": 0.08280254777070063,
+            "std": 0.019108280254777073,
+            "n_seeds": 3
+          }
+        },
+        "test": {
+          "n": {
+            "mean": 3018.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_safe": {
+            "mean": 1286.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_unsafe": {
+            "mean": 1732.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "roc_auc": {
+            "mean": 0.8608451500556115,
+            "std": 0.003776438032720758,
+            "n_seeds": 3
+          },
+          "average_precision": {
+            "mean": 0.8964513895240419,
+            "std": 0.0045454266002338435,
+            "n_seeds": 3
+          },
+          "sequence_fpr": {
+            "mean": 0.04872991187143597,
+            "std": 0.016935610392866392,
+            "n_seeds": 3
+          },
+          "recall": {
+            "mean": 0.4984603541185528,
+            "std": 0.04719719407816534,
+            "n_seeds": 3
+          },
+          "precision": {
+            "mean": 0.9334719895089211,
+            "std": 0.015415049398980108,
+            "n_seeds": 3
+          },
+          "f1": {
+            "mean": 0.648685506824649,
+            "std": 0.035654579974505884,
+            "n_seeds": 3
+          },
+          "recall_at_budget.32": {
+            "mean": 0.2867590454195535,
+            "std": 0.03382570378032516,
+            "n_seeds": 3
+          },
+          "recall_at_budget.64": {
+            "mean": 0.4468822170900693,
+            "std": 0.04138961828642674,
+            "n_seeds": 3
+          },
+          "recall_at_budget.128": {
+            "mean": 0.49634334103156275,
+            "std": 0.04558032830438707,
+            "n_seeds": 3
+          },
+          "recall_at_budget.256": {
+            "mean": 0.4984603541185528,
+            "std": 0.04719719407816534,
+            "n_seeds": 3
+          },
+          "alert_coverage": {
+            "mean": 0.3068257123923128,
+            "std": 0.03430183708307055,
+            "n_seeds": 3
+          },
+          "n_detected_unsafe": {
+            "mean": 863.3333333333334,
+            "std": 81.74554014338234,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_mean": {
+            "mean": 37.56836838980799,
+            "std": 0.27737019116154144,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_median": {
+            "mean": 32.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "normalized_alert_position_mean": {
+            "mean": 0.49169895514190554,
+            "std": 0.003068668582251094,
+            "n_seeds": 3
+          },
+          "confusion.tp": {
+            "mean": 863.3333333333334,
+            "std": 81.74554014338234,
+            "n_seeds": 3
+          },
+          "confusion.fp": {
+            "mean": 62.666666666666664,
+            "std": 21.77919496522618,
+            "n_seeds": 3
+          },
+          "confusion.tn": {
+            "mean": 1223.3333333333333,
+            "std": 21.77919496522618,
+            "n_seeds": 3
+          },
+          "confusion.fn": {
+            "mean": 868.6666666666666,
+            "std": 81.74554014338234,
+            "n_seeds": 3
+          },
+          "category_recall.animal_abuse.n_unsafe": {
+            "mean": 44.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.animal_abuse.recall": {
+            "mean": 0.4318181818181818,
+            "std": 0.06818181818181818,
+            "n_seeds": 3
+          },
+          "category_recall.child_abuse.n_unsafe": {
+            "mean": 27.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.child_abuse.recall": {
+            "mean": 0.6543209876543209,
+            "std": 0.05657500857970175,
+            "n_seeds": 3
+          },
+          "category_recall.controversial_topics,politics.n_unsafe": {
+            "mean": 95.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.controversial_topics,politics.recall": {
+            "mean": 0.09824561403508773,
+            "std": 0.033837371091203355,
+            "n_seeds": 3
+          },
+          "category_recall.discrimination,stereotype,injustice.n_unsafe": {
+            "mean": 297.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.discrimination,stereotype,injustice.recall": {
+            "mean": 0.37485970819304154,
+            "std": 0.08652172333202258,
+            "n_seeds": 3
+          },
+          "category_recall.drug_abuse,weapons,banned_substance.n_unsafe": {
+            "mean": 151.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.drug_abuse,weapons,banned_substance.recall": {
+            "mean": 0.6335540838852097,
+            "std": 0.055143470184533305,
+            "n_seeds": 3
+          },
+          "category_recall.financial_crime,property_crime,theft.n_unsafe": {
+            "mean": 262.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.financial_crime,property_crime,theft.recall": {
+            "mean": 0.7391857506361323,
+            "std": 0.04081174283039551,
+            "n_seeds": 3
+          },
+          "category_recall.hate_speech,offensive_language.n_unsafe": {
+            "mean": 302.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.hate_speech,offensive_language.recall": {
+            "mean": 0.43818984547461365,
+            "std": 0.047793896456094866,
+            "n_seeds": 3
+          },
+          "category_recall.misinformation_regarding_ethics,laws_and_safety.n_unsafe": {
+            "mean": 75.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.misinformation_regarding_ethics,laws_and_safety.recall": {
+            "mean": 0.30666666666666664,
+            "std": 0.035276684147527874,
+            "n_seeds": 3
+          },
+          "category_recall.non_violent_unethical_behavior.n_unsafe": {
+            "mean": 607.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.non_violent_unethical_behavior.recall": {
+            "mean": 0.48984074684239426,
+            "std": 0.048880414742391354,
+            "n_seeds": 3
+          },
+          "category_recall.privacy_violation.n_unsafe": {
+            "mean": 155.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.privacy_violation.recall": {
+            "mean": 0.5548387096774193,
+            "std": 0.017069363297190908,
+            "n_seeds": 3
+          },
+          "category_recall.self_harm.n_unsafe": {
+            "mean": 19.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.self_harm.recall": {
+            "mean": 0.6140350877192983,
+            "std": 0.10956136839295434,
+            "n_seeds": 3
+          },
+          "category_recall.sexually_explicit,adult_content.n_unsafe": {
+            "mean": 103.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.sexually_explicit,adult_content.recall": {
+            "mean": 0.255663430420712,
+            "std": 0.05605342419316756,
+            "n_seeds": 3
+          },
+          "category_recall.terrorism,organized_crime.n_unsafe": {
+            "mean": 43.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.terrorism,organized_crime.recall": {
+            "mean": 0.6356589147286821,
+            "std": 0.09398725312389257,
+            "n_seeds": 3
+          },
+          "category_recall.violence,aiding_and_abetting,incitement.n_unsafe": {
+            "mean": 724.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.violence,aiding_and_abetting,incitement.recall": {
+            "mean": 0.6639042357274402,
+            "std": 0.049112521031069126,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n": {
+            "mean": 1459.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_unsafe": {
+            "mean": 751.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_safe": {
+            "mean": 708.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.recall": {
+            "mean": 0.35730137594318684,
+            "std": 0.035388724838486714,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.sequence_fpr": {
+            "mean": 0.019774011299435026,
+            "std": 0.007473873760069465,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n": {
+            "mean": 1289.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_unsafe": {
+            "mean": 796.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_safe": {
+            "mean": 493.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.recall": {
+            "mean": 0.5850083752093803,
+            "std": 0.0507253598120382,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.sequence_fpr": {
+            "mean": 0.07640297498309669,
+            "std": 0.026395160643601263,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n": {
+            "mean": 260.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_unsafe": {
+            "mean": 178.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_safe": {
+            "mean": 82.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.recall": {
+            "mean": 0.6910112359550561,
+            "std": 0.08275797675649574,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.sequence_fpr": {
+            "mean": 0.13008130081300814,
+            "std": 0.04616998655122173,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n": {
+            "mean": 10.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_unsafe": {
+            "mean": 7.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_safe": {
+            "mean": 3.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.recall": {
+            "mean": 0.9047619047619048,
+            "std": 0.1649572197684645,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.sequence_fpr": {
+            "mean": 0.1111111111111111,
+            "std": 0.19245008972987526,
+            "n_seeds": 3
+          }
+        }
+      }
+    },
+    "static_lr": {
+      "seeds": {
+        "13": {
+          "threshold": 0.9072254081283577,
+          "calibration": {
+            "threshold": 0.9072254081283577,
+            "comparison": ">",
+            "target_fpr": 0.05,
+            "n_safe": 438,
+            "allowed_false_alarms": 21,
+            "empirical_sequence_fpr": 0.04794520547945205,
+            "note": "Empirical calibration constraint; no population-level FPR guarantee is claimed.",
+            "model": "static_lr",
+            "seed": 13,
+            "config_signature": "3d86e5c03537de7270f2c4ce21897c50d332d2b0eac05b37dc61213e1af8eea0",
+            "split": "calibration"
+          },
+          "splits": {
+            "dev": {
+              "n": 1003,
+              "n_safe": 452,
+              "n_unsafe": 551,
+              "roc_auc": 0.843329907007372,
+              "average_precision": 0.8759850542016446,
+              "sequence_fpr": 0.05530973451327434,
+              "recall": 0.5317604355716878,
+              "precision": 0.9213836477987422,
+              "f1": 0.6743383199079401,
+              "recall_at_budget": {
+                "32": 0.4010889292196007,
+                "64": 0.49727767695099817,
+                "128": 0.52994555353902,
+                "256": 0.5317604355716878
+              },
+              "alert_coverage": 0.317048853439681,
+              "n_detected_unsafe": 293,
+              "detected_alert_tokens_mean": 26.242320819112628,
+              "detected_alert_tokens_median": 16.0,
+              "normalized_alert_position_mean": 0.38151744954002176,
+              "confusion": {
+                "tp": 293,
+                "fp": 25,
+                "tn": 427,
+                "fn": 258
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 11,
+                  "recall": 0.45454545454545453
+                },
+                "child_abuse": {
+                  "n_unsafe": 2,
+                  "recall": 0.0
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 33,
+                  "recall": 0.06060606060606061
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 86,
+                  "recall": 0.3953488372093023
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 38,
+                  "recall": 0.7894736842105263
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 81,
+                  "recall": 0.7407407407407407
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 77,
+                  "recall": 0.4935064935064935
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 21,
+                  "recall": 0.5238095238095238
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 154,
+                  "recall": 0.474025974025974
+                },
+                "privacy_violation": {
+                  "n_unsafe": 80,
+                  "recall": 0.575
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 22,
+                  "recall": 0.18181818181818182
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 12,
+                  "recall": 0.6666666666666666
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 236,
+                  "recall": 0.6991525423728814
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 516,
+                  "n_unsafe": 250,
+                  "n_safe": 266,
+                  "recall": 0.464,
+                  "sequence_fpr": 0.045112781954887216
+                },
+                "65-128": {
+                  "n": 415,
+                  "n_unsafe": 252,
+                  "n_safe": 163,
+                  "recall": 0.5714285714285714,
+                  "sequence_fpr": 0.06134969325153374
+                },
+                "129-256": {
+                  "n": 67,
+                  "n_unsafe": 46,
+                  "n_safe": 21,
+                  "recall": 0.6956521739130435,
+                  "sequence_fpr": 0.14285714285714285
+                },
+                "257-512": {
+                  "n": 5,
+                  "n_unsafe": 3,
+                  "n_safe": 2,
+                  "recall": 0.3333333333333333,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "calibration": {
+              "n": 1001,
+              "n_safe": 438,
+              "n_unsafe": 563,
+              "roc_auc": 0.8702401518285116,
+              "average_precision": 0.8940054799226657,
+              "sequence_fpr": 0.04794520547945205,
+              "recall": 0.5541740674955595,
+              "precision": 0.9369369369369369,
+              "f1": 0.6964285714285714,
+              "recall_at_budget": {
+                "32": 0.42451154529307283,
+                "64": 0.5150976909413855,
+                "128": 0.5523978685612788,
+                "256": 0.5541740674955595
+              },
+              "alert_coverage": 0.33266733266733267,
+              "n_detected_unsafe": 312,
+              "detected_alert_tokens_mean": 26.057692307692307,
+              "detected_alert_tokens_median": 16.0,
+              "normalized_alert_position_mean": 0.35839894210590767,
+              "confusion": {
+                "tp": 312,
+                "fp": 21,
+                "tn": 417,
+                "fn": 251
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 12,
+                  "recall": 0.3333333333333333
+                },
+                "child_abuse": {
+                  "n_unsafe": 3,
+                  "recall": 0.3333333333333333
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 38,
+                  "recall": 0.10526315789473684
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 93,
+                  "recall": 0.43010752688172044
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 57,
+                  "recall": 0.5964912280701754
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 80,
+                  "recall": 0.7375
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 82,
+                  "recall": 0.5609756097560976
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 18,
+                  "recall": 0.3888888888888889
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 170,
+                  "recall": 0.5647058823529412
+                },
+                "privacy_violation": {
+                  "n_unsafe": 69,
+                  "recall": 0.5797101449275363
+                },
+                "self_harm": {
+                  "n_unsafe": 13,
+                  "recall": 0.6923076923076923
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 19,
+                  "recall": 0.42105263157894735
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 9,
+                  "recall": 0.5555555555555556
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 234,
+                  "recall": 0.7222222222222222
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 497,
+                  "n_unsafe": 237,
+                  "n_safe": 260,
+                  "recall": 0.4810126582278481,
+                  "sequence_fpr": 0.011538461538461539
+                },
+                "65-128": {
+                  "n": 421,
+                  "n_unsafe": 266,
+                  "n_safe": 155,
+                  "recall": 0.5827067669172933,
+                  "sequence_fpr": 0.07741935483870968
+                },
+                "129-256": {
+                  "n": 80,
+                  "n_unsafe": 58,
+                  "n_safe": 22,
+                  "recall": 0.7241379310344828,
+                  "sequence_fpr": 0.2727272727272727
+                },
+                "257-512": {
+                  "n": 3,
+                  "n_unsafe": 2,
+                  "n_safe": 1,
+                  "recall": 0.5,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "test": {
+              "n": 3018,
+              "n_safe": 1286,
+              "n_unsafe": 1732,
+              "roc_auc": 0.8553591888484622,
+              "average_precision": 0.8881628293342739,
+              "sequence_fpr": 0.05754276827371695,
+              "recall": 0.5433025404157044,
+              "precision": 0.9270935960591133,
+              "f1": 0.6851110302147798,
+              "recall_at_budget": {
+                "32": 0.41166281755196305,
+                "64": 0.5132794457274826,
+                "128": 0.5404157043879908,
+                "256": 0.5433025404157044
+              },
+              "alert_coverage": 0.33631544068919816,
+              "n_detected_unsafe": 941,
+              "detected_alert_tokens_mean": 26.53134962805526,
+              "detected_alert_tokens_median": 16.0,
+              "normalized_alert_position_mean": 0.3634456587993201,
+              "confusion": {
+                "tp": 941,
+                "fp": 74,
+                "tn": 1212,
+                "fn": 791
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 44,
+                  "recall": 0.5454545454545454
+                },
+                "child_abuse": {
+                  "n_unsafe": 27,
+                  "recall": 0.7037037037037037
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 95,
+                  "recall": 0.1368421052631579
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 297,
+                  "recall": 0.3939393939393939
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 151,
+                  "recall": 0.6688741721854304
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 262,
+                  "recall": 0.8053435114503816
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 302,
+                  "recall": 0.5066225165562914
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 75,
+                  "recall": 0.3333333333333333
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 607,
+                  "recall": 0.5271828665568369
+                },
+                "privacy_violation": {
+                  "n_unsafe": 155,
+                  "recall": 0.5548387096774193
+                },
+                "self_harm": {
+                  "n_unsafe": 19,
+                  "recall": 0.631578947368421
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 103,
+                  "recall": 0.3300970873786408
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 43,
+                  "recall": 0.7441860465116279
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 724,
+                  "recall": 0.7168508287292817
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 1459,
+                  "n_unsafe": 751,
+                  "n_safe": 708,
+                  "recall": 0.43142476697736354,
+                  "sequence_fpr": 0.03531073446327684
+                },
+                "65-128": {
+                  "n": 1289,
+                  "n_unsafe": 796,
+                  "n_safe": 493,
+                  "recall": 0.6105527638190955,
+                  "sequence_fpr": 0.07707910750507099
+                },
+                "129-256": {
+                  "n": 260,
+                  "n_unsafe": 178,
+                  "n_safe": 82,
+                  "recall": 0.6966292134831461,
+                  "sequence_fpr": 0.12195121951219512
+                },
+                "257-512": {
+                  "n": 10,
+                  "n_unsafe": 7,
+                  "n_safe": 3,
+                  "recall": 1.0,
+                  "sequence_fpr": 0.3333333333333333
+                }
+              }
+            },
+            "external": {
+              "n": 591,
+              "n_safe": 537,
+              "n_unsafe": 54,
+              "roc_auc": 0.8280226222498104,
+              "average_precision": 0.3326887954238953,
+              "sequence_fpr": 0.061452513966480445,
+              "recall": 0.3888888888888889,
+              "precision": 0.3888888888888889,
+              "f1": 0.3888888888888889,
+              "recall_at_budget": {
+                "32": 0.09259259259259259,
+                "64": 0.2037037037037037,
+                "128": 0.25925925925925924,
+                "256": 0.37037037037037035
+              },
+              "alert_coverage": 0.09137055837563451,
+              "n_detected_unsafe": 21,
+              "detected_alert_tokens_mean": 96.38095238095238,
+              "detected_alert_tokens_median": 64.0,
+              "normalized_alert_position_mean": 0.28685773950086707,
+              "confusion": {
+                "tp": 21,
+                "fp": 33,
+                "tn": 504,
+                "fn": 33
+              },
+              "category_recall": {},
+              "length_strata": {
+                "1-64": {
+                  "n": 28,
+                  "n_unsafe": 1,
+                  "n_safe": 27,
+                  "recall": 0.0,
+                  "sequence_fpr": 0.07407407407407407
+                },
+                "65-128": {
+                  "n": 187,
+                  "n_unsafe": 4,
+                  "n_safe": 183,
+                  "recall": 0.0,
+                  "sequence_fpr": 0.02185792349726776
+                },
+                "129-256": {
+                  "n": 181,
+                  "n_unsafe": 11,
+                  "n_safe": 170,
+                  "recall": 0.45454545454545453,
+                  "sequence_fpr": 0.047058823529411764
+                },
+                "257-512": {
+                  "n": 195,
+                  "n_unsafe": 38,
+                  "n_safe": 157,
+                  "recall": 0.42105263157894735,
+                  "sequence_fpr": 0.12101910828025478
+                }
+              }
+            }
+          },
+          "train_seconds": 6.9696197000012035,
+          "training_epochs": null
+        },
+        "2026": {
+          "threshold": 0.9072254081283577,
+          "calibration": {
+            "threshold": 0.9072254081283577,
+            "comparison": ">",
+            "target_fpr": 0.05,
+            "n_safe": 438,
+            "allowed_false_alarms": 21,
+            "empirical_sequence_fpr": 0.04794520547945205,
+            "note": "Empirical calibration constraint; no population-level FPR guarantee is claimed.",
+            "model": "static_lr",
+            "seed": 2026,
+            "config_signature": "3d86e5c03537de7270f2c4ce21897c50d332d2b0eac05b37dc61213e1af8eea0",
+            "split": "calibration"
+          },
+          "splits": {
+            "dev": {
+              "n": 1003,
+              "n_safe": 452,
+              "n_unsafe": 551,
+              "roc_auc": 0.843329907007372,
+              "average_precision": 0.8759850542016446,
+              "sequence_fpr": 0.05530973451327434,
+              "recall": 0.5317604355716878,
+              "precision": 0.9213836477987422,
+              "f1": 0.6743383199079401,
+              "recall_at_budget": {
+                "32": 0.4010889292196007,
+                "64": 0.49727767695099817,
+                "128": 0.52994555353902,
+                "256": 0.5317604355716878
+              },
+              "alert_coverage": 0.317048853439681,
+              "n_detected_unsafe": 293,
+              "detected_alert_tokens_mean": 26.242320819112628,
+              "detected_alert_tokens_median": 16.0,
+              "normalized_alert_position_mean": 0.38151744954002176,
+              "confusion": {
+                "tp": 293,
+                "fp": 25,
+                "tn": 427,
+                "fn": 258
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 11,
+                  "recall": 0.45454545454545453
+                },
+                "child_abuse": {
+                  "n_unsafe": 2,
+                  "recall": 0.0
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 33,
+                  "recall": 0.06060606060606061
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 86,
+                  "recall": 0.3953488372093023
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 38,
+                  "recall": 0.7894736842105263
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 81,
+                  "recall": 0.7407407407407407
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 77,
+                  "recall": 0.4935064935064935
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 21,
+                  "recall": 0.5238095238095238
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 154,
+                  "recall": 0.474025974025974
+                },
+                "privacy_violation": {
+                  "n_unsafe": 80,
+                  "recall": 0.575
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 22,
+                  "recall": 0.18181818181818182
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 12,
+                  "recall": 0.6666666666666666
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 236,
+                  "recall": 0.6991525423728814
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 516,
+                  "n_unsafe": 250,
+                  "n_safe": 266,
+                  "recall": 0.464,
+                  "sequence_fpr": 0.045112781954887216
+                },
+                "65-128": {
+                  "n": 415,
+                  "n_unsafe": 252,
+                  "n_safe": 163,
+                  "recall": 0.5714285714285714,
+                  "sequence_fpr": 0.06134969325153374
+                },
+                "129-256": {
+                  "n": 67,
+                  "n_unsafe": 46,
+                  "n_safe": 21,
+                  "recall": 0.6956521739130435,
+                  "sequence_fpr": 0.14285714285714285
+                },
+                "257-512": {
+                  "n": 5,
+                  "n_unsafe": 3,
+                  "n_safe": 2,
+                  "recall": 0.3333333333333333,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "calibration": {
+              "n": 1001,
+              "n_safe": 438,
+              "n_unsafe": 563,
+              "roc_auc": 0.8702401518285116,
+              "average_precision": 0.8940054799226657,
+              "sequence_fpr": 0.04794520547945205,
+              "recall": 0.5541740674955595,
+              "precision": 0.9369369369369369,
+              "f1": 0.6964285714285714,
+              "recall_at_budget": {
+                "32": 0.42451154529307283,
+                "64": 0.5150976909413855,
+                "128": 0.5523978685612788,
+                "256": 0.5541740674955595
+              },
+              "alert_coverage": 0.33266733266733267,
+              "n_detected_unsafe": 312,
+              "detected_alert_tokens_mean": 26.057692307692307,
+              "detected_alert_tokens_median": 16.0,
+              "normalized_alert_position_mean": 0.35839894210590767,
+              "confusion": {
+                "tp": 312,
+                "fp": 21,
+                "tn": 417,
+                "fn": 251
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 12,
+                  "recall": 0.3333333333333333
+                },
+                "child_abuse": {
+                  "n_unsafe": 3,
+                  "recall": 0.3333333333333333
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 38,
+                  "recall": 0.10526315789473684
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 93,
+                  "recall": 0.43010752688172044
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 57,
+                  "recall": 0.5964912280701754
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 80,
+                  "recall": 0.7375
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 82,
+                  "recall": 0.5609756097560976
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 18,
+                  "recall": 0.3888888888888889
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 170,
+                  "recall": 0.5647058823529412
+                },
+                "privacy_violation": {
+                  "n_unsafe": 69,
+                  "recall": 0.5797101449275363
+                },
+                "self_harm": {
+                  "n_unsafe": 13,
+                  "recall": 0.6923076923076923
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 19,
+                  "recall": 0.42105263157894735
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 9,
+                  "recall": 0.5555555555555556
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 234,
+                  "recall": 0.7222222222222222
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 497,
+                  "n_unsafe": 237,
+                  "n_safe": 260,
+                  "recall": 0.4810126582278481,
+                  "sequence_fpr": 0.011538461538461539
+                },
+                "65-128": {
+                  "n": 421,
+                  "n_unsafe": 266,
+                  "n_safe": 155,
+                  "recall": 0.5827067669172933,
+                  "sequence_fpr": 0.07741935483870968
+                },
+                "129-256": {
+                  "n": 80,
+                  "n_unsafe": 58,
+                  "n_safe": 22,
+                  "recall": 0.7241379310344828,
+                  "sequence_fpr": 0.2727272727272727
+                },
+                "257-512": {
+                  "n": 3,
+                  "n_unsafe": 2,
+                  "n_safe": 1,
+                  "recall": 0.5,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "test": {
+              "n": 3018,
+              "n_safe": 1286,
+              "n_unsafe": 1732,
+              "roc_auc": 0.8553591888484622,
+              "average_precision": 0.8881628293342739,
+              "sequence_fpr": 0.05754276827371695,
+              "recall": 0.5433025404157044,
+              "precision": 0.9270935960591133,
+              "f1": 0.6851110302147798,
+              "recall_at_budget": {
+                "32": 0.41166281755196305,
+                "64": 0.5132794457274826,
+                "128": 0.5404157043879908,
+                "256": 0.5433025404157044
+              },
+              "alert_coverage": 0.33631544068919816,
+              "n_detected_unsafe": 941,
+              "detected_alert_tokens_mean": 26.53134962805526,
+              "detected_alert_tokens_median": 16.0,
+              "normalized_alert_position_mean": 0.3634456587993201,
+              "confusion": {
+                "tp": 941,
+                "fp": 74,
+                "tn": 1212,
+                "fn": 791
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 44,
+                  "recall": 0.5454545454545454
+                },
+                "child_abuse": {
+                  "n_unsafe": 27,
+                  "recall": 0.7037037037037037
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 95,
+                  "recall": 0.1368421052631579
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 297,
+                  "recall": 0.3939393939393939
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 151,
+                  "recall": 0.6688741721854304
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 262,
+                  "recall": 0.8053435114503816
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 302,
+                  "recall": 0.5066225165562914
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 75,
+                  "recall": 0.3333333333333333
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 607,
+                  "recall": 0.5271828665568369
+                },
+                "privacy_violation": {
+                  "n_unsafe": 155,
+                  "recall": 0.5548387096774193
+                },
+                "self_harm": {
+                  "n_unsafe": 19,
+                  "recall": 0.631578947368421
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 103,
+                  "recall": 0.3300970873786408
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 43,
+                  "recall": 0.7441860465116279
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 724,
+                  "recall": 0.7168508287292817
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 1459,
+                  "n_unsafe": 751,
+                  "n_safe": 708,
+                  "recall": 0.43142476697736354,
+                  "sequence_fpr": 0.03531073446327684
+                },
+                "65-128": {
+                  "n": 1289,
+                  "n_unsafe": 796,
+                  "n_safe": 493,
+                  "recall": 0.6105527638190955,
+                  "sequence_fpr": 0.07707910750507099
+                },
+                "129-256": {
+                  "n": 260,
+                  "n_unsafe": 178,
+                  "n_safe": 82,
+                  "recall": 0.6966292134831461,
+                  "sequence_fpr": 0.12195121951219512
+                },
+                "257-512": {
+                  "n": 10,
+                  "n_unsafe": 7,
+                  "n_safe": 3,
+                  "recall": 1.0,
+                  "sequence_fpr": 0.3333333333333333
+                }
+              }
+            },
+            "external": {
+              "n": 591,
+              "n_safe": 537,
+              "n_unsafe": 54,
+              "roc_auc": 0.8280226222498104,
+              "average_precision": 0.3326887954238953,
+              "sequence_fpr": 0.061452513966480445,
+              "recall": 0.3888888888888889,
+              "precision": 0.3888888888888889,
+              "f1": 0.3888888888888889,
+              "recall_at_budget": {
+                "32": 0.09259259259259259,
+                "64": 0.2037037037037037,
+                "128": 0.25925925925925924,
+                "256": 0.37037037037037035
+              },
+              "alert_coverage": 0.09137055837563451,
+              "n_detected_unsafe": 21,
+              "detected_alert_tokens_mean": 96.38095238095238,
+              "detected_alert_tokens_median": 64.0,
+              "normalized_alert_position_mean": 0.28685773950086707,
+              "confusion": {
+                "tp": 21,
+                "fp": 33,
+                "tn": 504,
+                "fn": 33
+              },
+              "category_recall": {},
+              "length_strata": {
+                "1-64": {
+                  "n": 28,
+                  "n_unsafe": 1,
+                  "n_safe": 27,
+                  "recall": 0.0,
+                  "sequence_fpr": 0.07407407407407407
+                },
+                "65-128": {
+                  "n": 187,
+                  "n_unsafe": 4,
+                  "n_safe": 183,
+                  "recall": 0.0,
+                  "sequence_fpr": 0.02185792349726776
+                },
+                "129-256": {
+                  "n": 181,
+                  "n_unsafe": 11,
+                  "n_safe": 170,
+                  "recall": 0.45454545454545453,
+                  "sequence_fpr": 0.047058823529411764
+                },
+                "257-512": {
+                  "n": 195,
+                  "n_unsafe": 38,
+                  "n_safe": 157,
+                  "recall": 0.42105263157894735,
+                  "sequence_fpr": 0.12101910828025478
+                }
+              }
+            }
+          },
+          "train_seconds": 6.2680943999985175,
+          "training_epochs": null
+        },
+        "42": {
+          "threshold": 0.9072254081283577,
+          "calibration": {
+            "threshold": 0.9072254081283577,
+            "comparison": ">",
+            "target_fpr": 0.05,
+            "n_safe": 438,
+            "allowed_false_alarms": 21,
+            "empirical_sequence_fpr": 0.04794520547945205,
+            "note": "Empirical calibration constraint; no population-level FPR guarantee is claimed.",
+            "model": "static_lr",
+            "seed": 42,
+            "config_signature": "3d86e5c03537de7270f2c4ce21897c50d332d2b0eac05b37dc61213e1af8eea0",
+            "split": "calibration"
+          },
+          "splits": {
+            "dev": {
+              "n": 1003,
+              "n_safe": 452,
+              "n_unsafe": 551,
+              "roc_auc": 0.843329907007372,
+              "average_precision": 0.8759850542016446,
+              "sequence_fpr": 0.05530973451327434,
+              "recall": 0.5317604355716878,
+              "precision": 0.9213836477987422,
+              "f1": 0.6743383199079401,
+              "recall_at_budget": {
+                "32": 0.4010889292196007,
+                "64": 0.49727767695099817,
+                "128": 0.52994555353902,
+                "256": 0.5317604355716878
+              },
+              "alert_coverage": 0.317048853439681,
+              "n_detected_unsafe": 293,
+              "detected_alert_tokens_mean": 26.242320819112628,
+              "detected_alert_tokens_median": 16.0,
+              "normalized_alert_position_mean": 0.38151744954002176,
+              "confusion": {
+                "tp": 293,
+                "fp": 25,
+                "tn": 427,
+                "fn": 258
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 11,
+                  "recall": 0.45454545454545453
+                },
+                "child_abuse": {
+                  "n_unsafe": 2,
+                  "recall": 0.0
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 33,
+                  "recall": 0.06060606060606061
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 86,
+                  "recall": 0.3953488372093023
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 38,
+                  "recall": 0.7894736842105263
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 81,
+                  "recall": 0.7407407407407407
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 77,
+                  "recall": 0.4935064935064935
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 21,
+                  "recall": 0.5238095238095238
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 154,
+                  "recall": 0.474025974025974
+                },
+                "privacy_violation": {
+                  "n_unsafe": 80,
+                  "recall": 0.575
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 22,
+                  "recall": 0.18181818181818182
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 12,
+                  "recall": 0.6666666666666666
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 236,
+                  "recall": 0.6991525423728814
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 516,
+                  "n_unsafe": 250,
+                  "n_safe": 266,
+                  "recall": 0.464,
+                  "sequence_fpr": 0.045112781954887216
+                },
+                "65-128": {
+                  "n": 415,
+                  "n_unsafe": 252,
+                  "n_safe": 163,
+                  "recall": 0.5714285714285714,
+                  "sequence_fpr": 0.06134969325153374
+                },
+                "129-256": {
+                  "n": 67,
+                  "n_unsafe": 46,
+                  "n_safe": 21,
+                  "recall": 0.6956521739130435,
+                  "sequence_fpr": 0.14285714285714285
+                },
+                "257-512": {
+                  "n": 5,
+                  "n_unsafe": 3,
+                  "n_safe": 2,
+                  "recall": 0.3333333333333333,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "calibration": {
+              "n": 1001,
+              "n_safe": 438,
+              "n_unsafe": 563,
+              "roc_auc": 0.8702401518285116,
+              "average_precision": 0.8940054799226657,
+              "sequence_fpr": 0.04794520547945205,
+              "recall": 0.5541740674955595,
+              "precision": 0.9369369369369369,
+              "f1": 0.6964285714285714,
+              "recall_at_budget": {
+                "32": 0.42451154529307283,
+                "64": 0.5150976909413855,
+                "128": 0.5523978685612788,
+                "256": 0.5541740674955595
+              },
+              "alert_coverage": 0.33266733266733267,
+              "n_detected_unsafe": 312,
+              "detected_alert_tokens_mean": 26.057692307692307,
+              "detected_alert_tokens_median": 16.0,
+              "normalized_alert_position_mean": 0.35839894210590767,
+              "confusion": {
+                "tp": 312,
+                "fp": 21,
+                "tn": 417,
+                "fn": 251
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 12,
+                  "recall": 0.3333333333333333
+                },
+                "child_abuse": {
+                  "n_unsafe": 3,
+                  "recall": 0.3333333333333333
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 38,
+                  "recall": 0.10526315789473684
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 93,
+                  "recall": 0.43010752688172044
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 57,
+                  "recall": 0.5964912280701754
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 80,
+                  "recall": 0.7375
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 82,
+                  "recall": 0.5609756097560976
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 18,
+                  "recall": 0.3888888888888889
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 170,
+                  "recall": 0.5647058823529412
+                },
+                "privacy_violation": {
+                  "n_unsafe": 69,
+                  "recall": 0.5797101449275363
+                },
+                "self_harm": {
+                  "n_unsafe": 13,
+                  "recall": 0.6923076923076923
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 19,
+                  "recall": 0.42105263157894735
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 9,
+                  "recall": 0.5555555555555556
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 234,
+                  "recall": 0.7222222222222222
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 497,
+                  "n_unsafe": 237,
+                  "n_safe": 260,
+                  "recall": 0.4810126582278481,
+                  "sequence_fpr": 0.011538461538461539
+                },
+                "65-128": {
+                  "n": 421,
+                  "n_unsafe": 266,
+                  "n_safe": 155,
+                  "recall": 0.5827067669172933,
+                  "sequence_fpr": 0.07741935483870968
+                },
+                "129-256": {
+                  "n": 80,
+                  "n_unsafe": 58,
+                  "n_safe": 22,
+                  "recall": 0.7241379310344828,
+                  "sequence_fpr": 0.2727272727272727
+                },
+                "257-512": {
+                  "n": 3,
+                  "n_unsafe": 2,
+                  "n_safe": 1,
+                  "recall": 0.5,
+                  "sequence_fpr": 0.0
+                }
+              }
+            },
+            "test": {
+              "n": 3018,
+              "n_safe": 1286,
+              "n_unsafe": 1732,
+              "roc_auc": 0.8553591888484622,
+              "average_precision": 0.8881628293342739,
+              "sequence_fpr": 0.05754276827371695,
+              "recall": 0.5433025404157044,
+              "precision": 0.9270935960591133,
+              "f1": 0.6851110302147798,
+              "recall_at_budget": {
+                "32": 0.41166281755196305,
+                "64": 0.5132794457274826,
+                "128": 0.5404157043879908,
+                "256": 0.5433025404157044
+              },
+              "alert_coverage": 0.33631544068919816,
+              "n_detected_unsafe": 941,
+              "detected_alert_tokens_mean": 26.53134962805526,
+              "detected_alert_tokens_median": 16.0,
+              "normalized_alert_position_mean": 0.3634456587993201,
+              "confusion": {
+                "tp": 941,
+                "fp": 74,
+                "tn": 1212,
+                "fn": 791
+              },
+              "category_recall": {
+                "animal_abuse": {
+                  "n_unsafe": 44,
+                  "recall": 0.5454545454545454
+                },
+                "child_abuse": {
+                  "n_unsafe": 27,
+                  "recall": 0.7037037037037037
+                },
+                "controversial_topics,politics": {
+                  "n_unsafe": 95,
+                  "recall": 0.1368421052631579
+                },
+                "discrimination,stereotype,injustice": {
+                  "n_unsafe": 297,
+                  "recall": 0.3939393939393939
+                },
+                "drug_abuse,weapons,banned_substance": {
+                  "n_unsafe": 151,
+                  "recall": 0.6688741721854304
+                },
+                "financial_crime,property_crime,theft": {
+                  "n_unsafe": 262,
+                  "recall": 0.8053435114503816
+                },
+                "hate_speech,offensive_language": {
+                  "n_unsafe": 302,
+                  "recall": 0.5066225165562914
+                },
+                "misinformation_regarding_ethics,laws_and_safety": {
+                  "n_unsafe": 75,
+                  "recall": 0.3333333333333333
+                },
+                "non_violent_unethical_behavior": {
+                  "n_unsafe": 607,
+                  "recall": 0.5271828665568369
+                },
+                "privacy_violation": {
+                  "n_unsafe": 155,
+                  "recall": 0.5548387096774193
+                },
+                "self_harm": {
+                  "n_unsafe": 19,
+                  "recall": 0.631578947368421
+                },
+                "sexually_explicit,adult_content": {
+                  "n_unsafe": 103,
+                  "recall": 0.3300970873786408
+                },
+                "terrorism,organized_crime": {
+                  "n_unsafe": 43,
+                  "recall": 0.7441860465116279
+                },
+                "violence,aiding_and_abetting,incitement": {
+                  "n_unsafe": 724,
+                  "recall": 0.7168508287292817
+                }
+              },
+              "length_strata": {
+                "1-64": {
+                  "n": 1459,
+                  "n_unsafe": 751,
+                  "n_safe": 708,
+                  "recall": 0.43142476697736354,
+                  "sequence_fpr": 0.03531073446327684
+                },
+                "65-128": {
+                  "n": 1289,
+                  "n_unsafe": 796,
+                  "n_safe": 493,
+                  "recall": 0.6105527638190955,
+                  "sequence_fpr": 0.07707910750507099
+                },
+                "129-256": {
+                  "n": 260,
+                  "n_unsafe": 178,
+                  "n_safe": 82,
+                  "recall": 0.6966292134831461,
+                  "sequence_fpr": 0.12195121951219512
+                },
+                "257-512": {
+                  "n": 10,
+                  "n_unsafe": 7,
+                  "n_safe": 3,
+                  "recall": 1.0,
+                  "sequence_fpr": 0.3333333333333333
+                }
+              }
+            },
+            "external": {
+              "n": 591,
+              "n_safe": 537,
+              "n_unsafe": 54,
+              "roc_auc": 0.8280226222498104,
+              "average_precision": 0.3326887954238953,
+              "sequence_fpr": 0.061452513966480445,
+              "recall": 0.3888888888888889,
+              "precision": 0.3888888888888889,
+              "f1": 0.3888888888888889,
+              "recall_at_budget": {
+                "32": 0.09259259259259259,
+                "64": 0.2037037037037037,
+                "128": 0.25925925925925924,
+                "256": 0.37037037037037035
+              },
+              "alert_coverage": 0.09137055837563451,
+              "n_detected_unsafe": 21,
+              "detected_alert_tokens_mean": 96.38095238095238,
+              "detected_alert_tokens_median": 64.0,
+              "normalized_alert_position_mean": 0.28685773950086707,
+              "confusion": {
+                "tp": 21,
+                "fp": 33,
+                "tn": 504,
+                "fn": 33
+              },
+              "category_recall": {},
+              "length_strata": {
+                "1-64": {
+                  "n": 28,
+                  "n_unsafe": 1,
+                  "n_safe": 27,
+                  "recall": 0.0,
+                  "sequence_fpr": 0.07407407407407407
+                },
+                "65-128": {
+                  "n": 187,
+                  "n_unsafe": 4,
+                  "n_safe": 183,
+                  "recall": 0.0,
+                  "sequence_fpr": 0.02185792349726776
+                },
+                "129-256": {
+                  "n": 181,
+                  "n_unsafe": 11,
+                  "n_safe": 170,
+                  "recall": 0.45454545454545453,
+                  "sequence_fpr": 0.047058823529411764
+                },
+                "257-512": {
+                  "n": 195,
+                  "n_unsafe": 38,
+                  "n_safe": 157,
+                  "recall": 0.42105263157894735,
+                  "sequence_fpr": 0.12101910828025478
+                }
+              }
+            }
+          },
+          "train_seconds": 5.790512600000511,
+          "training_epochs": null
+        }
+      },
+      "aggregate": {
+        "calibration": {
+          "n": {
+            "mean": 1001.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_safe": {
+            "mean": 438.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_unsafe": {
+            "mean": 563.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "roc_auc": {
+            "mean": 0.8702401518285116,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "average_precision": {
+            "mean": 0.8940054799226657,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "sequence_fpr": {
+            "mean": 0.04794520547945205,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall": {
+            "mean": 0.5541740674955595,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "precision": {
+            "mean": 0.9369369369369368,
+            "std": 1.3597399555105182e-16,
+            "n_seeds": 3
+          },
+          "f1": {
+            "mean": 0.6964285714285715,
+            "std": 1.3597399555105182e-16,
+            "n_seeds": 3
+          },
+          "recall_at_budget.32": {
+            "mean": 0.42451154529307283,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall_at_budget.64": {
+            "mean": 0.5150976909413855,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall_at_budget.128": {
+            "mean": 0.5523978685612788,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall_at_budget.256": {
+            "mean": 0.5541740674955595,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "alert_coverage": {
+            "mean": 0.33266733266733267,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_detected_unsafe": {
+            "mean": 312.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_mean": {
+            "mean": 26.057692307692307,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_median": {
+            "mean": 16.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "normalized_alert_position_mean": {
+            "mean": 0.35839894210590767,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.tp": {
+            "mean": 312.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.fp": {
+            "mean": 21.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.tn": {
+            "mean": 417.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.fn": {
+            "mean": 251.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.animal_abuse.n_unsafe": {
+            "mean": 12.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.animal_abuse.recall": {
+            "mean": 0.3333333333333333,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.child_abuse.n_unsafe": {
+            "mean": 3.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.child_abuse.recall": {
+            "mean": 0.3333333333333333,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.controversial_topics,politics.n_unsafe": {
+            "mean": 38.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.controversial_topics,politics.recall": {
+            "mean": 0.10526315789473684,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.discrimination,stereotype,injustice.n_unsafe": {
+            "mean": 93.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.discrimination,stereotype,injustice.recall": {
+            "mean": 0.43010752688172044,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.drug_abuse,weapons,banned_substance.n_unsafe": {
+            "mean": 57.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.drug_abuse,weapons,banned_substance.recall": {
+            "mean": 0.5964912280701754,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.financial_crime,property_crime,theft.n_unsafe": {
+            "mean": 80.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.financial_crime,property_crime,theft.recall": {
+            "mean": 0.7375000000000002,
+            "std": 1.3597399555105182e-16,
+            "n_seeds": 3
+          },
+          "category_recall.hate_speech,offensive_language.n_unsafe": {
+            "mean": 82.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.hate_speech,offensive_language.recall": {
+            "mean": 0.5609756097560976,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.misinformation_regarding_ethics,laws_and_safety.n_unsafe": {
+            "mean": 18.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.misinformation_regarding_ethics,laws_and_safety.recall": {
+            "mean": 0.3888888888888889,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.non_violent_unethical_behavior.n_unsafe": {
+            "mean": 170.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.non_violent_unethical_behavior.recall": {
+            "mean": 0.5647058823529412,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.privacy_violation.n_unsafe": {
+            "mean": 69.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.privacy_violation.recall": {
+            "mean": 0.5797101449275363,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.self_harm.n_unsafe": {
+            "mean": 13.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.self_harm.recall": {
+            "mean": 0.6923076923076922,
+            "std": 1.3597399555105182e-16,
+            "n_seeds": 3
+          },
+          "category_recall.sexually_explicit,adult_content.n_unsafe": {
+            "mean": 19.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.sexually_explicit,adult_content.recall": {
+            "mean": 0.42105263157894735,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.terrorism,organized_crime.n_unsafe": {
+            "mean": 9.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.terrorism,organized_crime.recall": {
+            "mean": 0.5555555555555556,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.violence,aiding_and_abetting,incitement.n_unsafe": {
+            "mean": 234.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.violence,aiding_and_abetting,incitement.recall": {
+            "mean": 0.7222222222222222,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n": {
+            "mean": 497.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_unsafe": {
+            "mean": 237.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_safe": {
+            "mean": 260.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.recall": {
+            "mean": 0.48101265822784817,
+            "std": 6.798699777552591e-17,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.sequence_fpr": {
+            "mean": 0.011538461538461539,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n": {
+            "mean": 421.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_unsafe": {
+            "mean": 266.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_safe": {
+            "mean": 155.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.recall": {
+            "mean": 0.5827067669172933,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.sequence_fpr": {
+            "mean": 0.07741935483870968,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n": {
+            "mean": 80.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_unsafe": {
+            "mean": 58.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_safe": {
+            "mean": 22.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.recall": {
+            "mean": 0.7241379310344828,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.sequence_fpr": {
+            "mean": 0.2727272727272727,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n": {
+            "mean": 3.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_unsafe": {
+            "mean": 2.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_safe": {
+            "mean": 1.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.recall": {
+            "mean": 0.5,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.sequence_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "dev": {
+          "n": {
+            "mean": 1003.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_safe": {
+            "mean": 452.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_unsafe": {
+            "mean": 551.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "roc_auc": {
+            "mean": 0.843329907007372,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "average_precision": {
+            "mean": 0.8759850542016446,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "sequence_fpr": {
+            "mean": 0.05530973451327434,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall": {
+            "mean": 0.5317604355716878,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "precision": {
+            "mean": 0.9213836477987422,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "f1": {
+            "mean": 0.6743383199079401,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall_at_budget.32": {
+            "mean": 0.4010889292196007,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall_at_budget.64": {
+            "mean": 0.49727767695099817,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall_at_budget.128": {
+            "mean": 0.52994555353902,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall_at_budget.256": {
+            "mean": 0.5317604355716878,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "alert_coverage": {
+            "mean": 0.317048853439681,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_detected_unsafe": {
+            "mean": 293.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_mean": {
+            "mean": 26.24232081911263,
+            "std": 4.351167857633658e-15,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_median": {
+            "mean": 16.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "normalized_alert_position_mean": {
+            "mean": 0.38151744954002176,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.tp": {
+            "mean": 293.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.fp": {
+            "mean": 25.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.tn": {
+            "mean": 427.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.fn": {
+            "mean": 258.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.animal_abuse.n_unsafe": {
+            "mean": 11.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.animal_abuse.recall": {
+            "mean": 0.45454545454545453,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.child_abuse.n_unsafe": {
+            "mean": 2.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.child_abuse.recall": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.controversial_topics,politics.n_unsafe": {
+            "mean": 33.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.controversial_topics,politics.recall": {
+            "mean": 0.06060606060606061,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.discrimination,stereotype,injustice.n_unsafe": {
+            "mean": 86.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.discrimination,stereotype,injustice.recall": {
+            "mean": 0.3953488372093023,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.drug_abuse,weapons,banned_substance.n_unsafe": {
+            "mean": 38.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.drug_abuse,weapons,banned_substance.recall": {
+            "mean": 0.7894736842105262,
+            "std": 1.3597399555105182e-16,
+            "n_seeds": 3
+          },
+          "category_recall.financial_crime,property_crime,theft.n_unsafe": {
+            "mean": 81.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.financial_crime,property_crime,theft.recall": {
+            "mean": 0.7407407407407408,
+            "std": 1.3597399555105182e-16,
+            "n_seeds": 3
+          },
+          "category_recall.hate_speech,offensive_language.n_unsafe": {
+            "mean": 77.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.hate_speech,offensive_language.recall": {
+            "mean": 0.4935064935064935,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.misinformation_regarding_ethics,laws_and_safety.n_unsafe": {
+            "mean": 21.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.misinformation_regarding_ethics,laws_and_safety.recall": {
+            "mean": 0.5238095238095238,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.non_violent_unethical_behavior.n_unsafe": {
+            "mean": 154.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.non_violent_unethical_behavior.recall": {
+            "mean": 0.474025974025974,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.privacy_violation.n_unsafe": {
+            "mean": 80.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.privacy_violation.recall": {
+            "mean": 0.575,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.sexually_explicit,adult_content.n_unsafe": {
+            "mean": 22.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.sexually_explicit,adult_content.recall": {
+            "mean": 0.1818181818181818,
+            "std": 3.3993498887762956e-17,
+            "n_seeds": 3
+          },
+          "category_recall.terrorism,organized_crime.n_unsafe": {
+            "mean": 12.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.terrorism,organized_crime.recall": {
+            "mean": 0.6666666666666666,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.violence,aiding_and_abetting,incitement.n_unsafe": {
+            "mean": 236.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.violence,aiding_and_abetting,incitement.recall": {
+            "mean": 0.6991525423728814,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n": {
+            "mean": 516.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_unsafe": {
+            "mean": 250.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_safe": {
+            "mean": 266.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.recall": {
+            "mean": 0.464,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.sequence_fpr": {
+            "mean": 0.045112781954887216,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n": {
+            "mean": 415.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_unsafe": {
+            "mean": 252.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_safe": {
+            "mean": 163.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.recall": {
+            "mean": 0.5714285714285714,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.sequence_fpr": {
+            "mean": 0.06134969325153374,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n": {
+            "mean": 67.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_unsafe": {
+            "mean": 46.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_safe": {
+            "mean": 21.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.recall": {
+            "mean": 0.6956521739130435,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.sequence_fpr": {
+            "mean": 0.14285714285714285,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n": {
+            "mean": 5.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_unsafe": {
+            "mean": 3.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_safe": {
+            "mean": 2.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.recall": {
+            "mean": 0.3333333333333333,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.sequence_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "external": {
+          "n": {
+            "mean": 591.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_safe": {
+            "mean": 537.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_unsafe": {
+            "mean": 54.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "roc_auc": {
+            "mean": 0.8280226222498103,
+            "std": 1.3597399555105182e-16,
+            "n_seeds": 3
+          },
+          "average_precision": {
+            "mean": 0.3326887954238953,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "sequence_fpr": {
+            "mean": 0.061452513966480445,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall": {
+            "mean": 0.3888888888888889,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "precision": {
+            "mean": 0.3888888888888889,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "f1": {
+            "mean": 0.3888888888888889,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall_at_budget.32": {
+            "mean": 0.0925925925925926,
+            "std": 1.6996749443881478e-17,
+            "n_seeds": 3
+          },
+          "recall_at_budget.64": {
+            "mean": 0.2037037037037037,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall_at_budget.128": {
+            "mean": 0.25925925925925924,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall_at_budget.256": {
+            "mean": 0.3703703703703704,
+            "std": 6.798699777552591e-17,
+            "n_seeds": 3
+          },
+          "alert_coverage": {
+            "mean": 0.09137055837563451,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_detected_unsafe": {
+            "mean": 21.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_mean": {
+            "mean": 96.38095238095237,
+            "std": 1.7404671430534633e-14,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_median": {
+            "mean": 64.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "normalized_alert_position_mean": {
+            "mean": 0.28685773950086707,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.tp": {
+            "mean": 21.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.fp": {
+            "mean": 33.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.tn": {
+            "mean": 504.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.fn": {
+            "mean": 33.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n": {
+            "mean": 28.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_unsafe": {
+            "mean": 1.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_safe": {
+            "mean": 27.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.recall": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.sequence_fpr": {
+            "mean": 0.07407407407407407,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n": {
+            "mean": 187.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_unsafe": {
+            "mean": 4.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_safe": {
+            "mean": 183.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.recall": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.sequence_fpr": {
+            "mean": 0.02185792349726776,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n": {
+            "mean": 181.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_unsafe": {
+            "mean": 11.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_safe": {
+            "mean": 170.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.recall": {
+            "mean": 0.45454545454545453,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.sequence_fpr": {
+            "mean": 0.047058823529411764,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n": {
+            "mean": 195.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_unsafe": {
+            "mean": 38.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_safe": {
+            "mean": 157.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.recall": {
+            "mean": 0.42105263157894735,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.sequence_fpr": {
+            "mean": 0.12101910828025479,
+            "std": 1.6996749443881478e-17,
+            "n_seeds": 3
+          }
+        },
+        "test": {
+          "n": {
+            "mean": 3018.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_safe": {
+            "mean": 1286.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_unsafe": {
+            "mean": 1732.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "roc_auc": {
+            "mean": 0.8553591888484622,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "average_precision": {
+            "mean": 0.8881628293342739,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "sequence_fpr": {
+            "mean": 0.05754276827371695,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall": {
+            "mean": 0.5433025404157044,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "precision": {
+            "mean": 0.9270935960591133,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "f1": {
+            "mean": 0.6851110302147797,
+            "std": 1.3597399555105182e-16,
+            "n_seeds": 3
+          },
+          "recall_at_budget.32": {
+            "mean": 0.41166281755196305,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall_at_budget.64": {
+            "mean": 0.5132794457274826,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall_at_budget.128": {
+            "mean": 0.5404157043879908,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "recall_at_budget.256": {
+            "mean": 0.5433025404157044,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "alert_coverage": {
+            "mean": 0.33631544068919816,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "n_detected_unsafe": {
+            "mean": 941.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_mean": {
+            "mean": 26.531349628055256,
+            "std": 4.351167857633658e-15,
+            "n_seeds": 3
+          },
+          "detected_alert_tokens_median": {
+            "mean": 16.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "normalized_alert_position_mean": {
+            "mean": 0.36344565879932017,
+            "std": 6.798699777552591e-17,
+            "n_seeds": 3
+          },
+          "confusion.tp": {
+            "mean": 941.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.fp": {
+            "mean": 74.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.tn": {
+            "mean": 1212.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "confusion.fn": {
+            "mean": 791.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.animal_abuse.n_unsafe": {
+            "mean": 44.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.animal_abuse.recall": {
+            "mean": 0.5454545454545454,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.child_abuse.n_unsafe": {
+            "mean": 27.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.child_abuse.recall": {
+            "mean": 0.7037037037037037,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.controversial_topics,politics.n_unsafe": {
+            "mean": 95.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.controversial_topics,politics.recall": {
+            "mean": 0.1368421052631579,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.discrimination,stereotype,injustice.n_unsafe": {
+            "mean": 297.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.discrimination,stereotype,injustice.recall": {
+            "mean": 0.39393939393939387,
+            "std": 6.798699777552591e-17,
+            "n_seeds": 3
+          },
+          "category_recall.drug_abuse,weapons,banned_substance.n_unsafe": {
+            "mean": 151.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.drug_abuse,weapons,banned_substance.recall": {
+            "mean": 0.6688741721854304,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.financial_crime,property_crime,theft.n_unsafe": {
+            "mean": 262.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.financial_crime,property_crime,theft.recall": {
+            "mean": 0.8053435114503816,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.hate_speech,offensive_language.n_unsafe": {
+            "mean": 302.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.hate_speech,offensive_language.recall": {
+            "mean": 0.5066225165562914,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.misinformation_regarding_ethics,laws_and_safety.n_unsafe": {
+            "mean": 75.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.misinformation_regarding_ethics,laws_and_safety.recall": {
+            "mean": 0.3333333333333333,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.non_violent_unethical_behavior.n_unsafe": {
+            "mean": 607.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.non_violent_unethical_behavior.recall": {
+            "mean": 0.5271828665568369,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.privacy_violation.n_unsafe": {
+            "mean": 155.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.privacy_violation.recall": {
+            "mean": 0.5548387096774193,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.self_harm.n_unsafe": {
+            "mean": 19.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.self_harm.recall": {
+            "mean": 0.631578947368421,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.sexually_explicit,adult_content.n_unsafe": {
+            "mean": 103.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.sexually_explicit,adult_content.recall": {
+            "mean": 0.3300970873786408,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.terrorism,organized_crime.n_unsafe": {
+            "mean": 43.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.terrorism,organized_crime.recall": {
+            "mean": 0.7441860465116279,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.violence,aiding_and_abetting,incitement.n_unsafe": {
+            "mean": 724.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "category_recall.violence,aiding_and_abetting,incitement.recall": {
+            "mean": 0.7168508287292817,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n": {
+            "mean": 1459.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_unsafe": {
+            "mean": 751.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.n_safe": {
+            "mean": 708.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.recall": {
+            "mean": 0.4314247669773635,
+            "std": 6.798699777552591e-17,
+            "n_seeds": 3
+          },
+          "length_strata.1-64.sequence_fpr": {
+            "mean": 0.03531073446327684,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n": {
+            "mean": 1289.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_unsafe": {
+            "mean": 796.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.n_safe": {
+            "mean": 493.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.recall": {
+            "mean": 0.6105527638190955,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.65-128.sequence_fpr": {
+            "mean": 0.07707910750507099,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n": {
+            "mean": 260.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_unsafe": {
+            "mean": 178.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.n_safe": {
+            "mean": 82.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.recall": {
+            "mean": 0.6966292134831461,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.129-256.sequence_fpr": {
+            "mean": 0.12195121951219512,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n": {
+            "mean": 10.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_unsafe": {
+            "mean": 7.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.n_safe": {
+            "mean": 3.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.recall": {
+            "mean": 1.0,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "length_strata.257-512.sequence_fpr": {
+            "mean": 0.3333333333333333,
+            "std": 0.0,
+            "n_seeds": 3
+          }
+        }
+      }
+    }
+  },
+  "paired_comparisons": [
+    {
+      "metric": "recall",
+      "estimate": -0.0448421862971517,
+      "ci_low": -0.058947396111569864,
+      "ci_high": -0.03057755252877205,
+      "n_bootstrap": 1000,
+      "n_valid_bootstrap": 1000,
+      "n_groups": 2524,
+      "n_seeds": 3,
+      "direction": "challenger_minus_reference",
+      "split": "test",
+      "reference": "static_lr",
+      "challenger": "gru"
+    },
+    {
+      "metric": "sequence_fpr",
+      "estimate": -0.00881285640228098,
+      "ci_low": -0.017956966053308526,
+      "ci_high": 0.001058541315776034,
+      "n_bootstrap": 1000,
+      "n_valid_bootstrap": 1000,
+      "n_groups": 2524,
+      "n_seeds": 3,
+      "direction": "challenger_minus_reference",
+      "split": "test",
+      "reference": "static_lr",
+      "challenger": "gru"
+    },
+    {
+      "metric": "recall_at_budget.32",
+      "estimate": -0.12490377213240955,
+      "ci_low": -0.14190299827598105,
+      "ci_high": -0.1075171909475208,
+      "n_bootstrap": 1000,
+      "n_valid_bootstrap": 1000,
+      "n_groups": 2524,
+      "n_seeds": 3,
+      "direction": "challenger_minus_reference",
+      "split": "test",
+      "reference": "static_lr",
+      "challenger": "gru"
+    },
+    {
+      "metric": "recall_at_budget.64",
+      "estimate": -0.06639722863741332,
+      "ci_low": -0.08213721820832368,
+      "ci_high": -0.04992238215231463,
+      "n_bootstrap": 1000,
+      "n_valid_bootstrap": 1000,
+      "n_groups": 2524,
+      "n_seeds": 3,
+      "direction": "challenger_minus_reference",
+      "split": "test",
+      "reference": "static_lr",
+      "challenger": "gru"
+    },
+    {
+      "metric": "recall_at_budget.128",
+      "estimate": -0.044072363356428,
+      "ci_low": -0.05844111421695187,
+      "ci_high": -0.029831937089616786,
+      "n_bootstrap": 1000,
+      "n_valid_bootstrap": 1000,
+      "n_groups": 2524,
+      "n_seeds": 3,
+      "direction": "challenger_minus_reference",
+      "split": "test",
+      "reference": "static_lr",
+      "challenger": "gru"
+    },
+    {
+      "metric": "recall_at_budget.256",
+      "estimate": -0.0448421862971517,
+      "ci_low": -0.058947396111569864,
+      "ci_high": -0.03057755252877205,
+      "n_bootstrap": 1000,
+      "n_valid_bootstrap": 1000,
+      "n_groups": 2524,
+      "n_seeds": 3,
+      "direction": "challenger_minus_reference",
+      "split": "test",
+      "reference": "static_lr",
+      "challenger": "gru"
+    },
+    {
+      "metric": "recall",
+      "estimate": -0.11111111111111116,
+      "ci_low": -0.2088926553672316,
+      "ci_high": -0.02169565217391307,
+      "n_bootstrap": 1000,
+      "n_valid_bootstrap": 1000,
+      "n_groups": 591,
+      "n_seeds": 3,
+      "direction": "challenger_minus_reference",
+      "split": "external",
+      "reference": "static_lr",
+      "challenger": "gru"
+    },
+    {
+      "metric": "sequence_fpr",
+      "estimate": -0.03289882060831781,
+      "ci_low": -0.04797957835796905,
+      "ci_high": -0.01886526956706433,
+      "n_bootstrap": 1000,
+      "n_valid_bootstrap": 1000,
+      "n_groups": 591,
+      "n_seeds": 3,
+      "direction": "challenger_minus_reference",
+      "split": "external",
+      "reference": "static_lr",
+      "challenger": "gru"
+    },
+    {
+      "metric": "recall_at_budget.32",
+      "estimate": -0.055555555555555566,
+      "ci_low": -0.13450573549257758,
+      "ci_high": 0.010297619047619012,
+      "n_bootstrap": 1000,
+      "n_valid_bootstrap": 1000,
+      "n_groups": 591,
+      "n_seeds": 3,
+      "direction": "challenger_minus_reference",
+      "split": "external",
+      "reference": "static_lr",
+      "challenger": "gru"
+    },
+    {
+      "metric": "recall_at_budget.64",
+      "estimate": -0.12962962962962962,
+      "ci_low": -0.2243659420289855,
+      "ci_high": -0.05127118644067798,
+      "n_bootstrap": 1000,
+      "n_valid_bootstrap": 1000,
+      "n_groups": 591,
+      "n_seeds": 3,
+      "direction": "challenger_minus_reference",
+      "split": "external",
+      "reference": "static_lr",
+      "challenger": "gru"
+    },
+    {
+      "metric": "recall_at_budget.128",
+      "estimate": -0.08641975308641975,
+      "ci_low": -0.1828411910669975,
+      "ci_high": 0.006178774928774925,
+      "n_bootstrap": 1000,
+      "n_valid_bootstrap": 1000,
+      "n_groups": 591,
+      "n_seeds": 3,
+      "direction": "challenger_minus_reference",
+      "split": "external",
+      "reference": "static_lr",
+      "challenger": "gru"
+    },
+    {
+      "metric": "recall_at_budget.256",
+      "estimate": -0.11111111111111116,
+      "ci_low": -0.19700999355254672,
+      "ci_high": -0.03545166106756247,
+      "n_bootstrap": 1000,
+      "n_valid_bootstrap": 1000,
+      "n_groups": 591,
+      "n_seeds": 3,
+      "direction": "challenger_minus_reference",
+      "split": "external",
+      "reference": "static_lr",
+      "challenger": "gru"
+    }
+  ],
+  "notes": [
+    "All prefix targets are final-response labels, not token-level harmfulness labels.",
+    "Thresholds are fixed using calibration safe-response maximum scores and strict > comparison.",
+    "Detection positions are conditional on detecting unsafe final responses; they do not measure harmful onset.",
+    "Bootstrap samples prompt groups jointly across models and seeds; thresholds are not refitted."
+  ],
+  "timing": {
+    "evaluation_elapsed_seconds": 4.761051699999371
+  }
+}

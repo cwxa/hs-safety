@@ -1,0 +1,20 @@
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx,booktabs,array,tabularx}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\risk}{\ensuremath{\widehat p}}
+\newcommand{\method}{dynamic GRU}
+\newcommand{\pending}[1]{\textit{#1}}
+% 缺少图像时显示明确状态，避免将示意图误当成真实结果图。
+\newcommand{\resultfigure}[3]{%
+  \begin{figure}[t]\centering
+  \IfFileExists{figures/#1.pdf}{\includegraphics[width=\columnwidth]{figures/#1.pdf}}{\fbox{\parbox[c][32mm][c]{.90\columnwidth}{\centering #3}}}
+  \caption{#2}\label{fig:#1}\end{figure}}
+\setlength{\tabcolsep}{3.2pt}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\hyphenation{trans-form-er re-pro-duc-ibil-ity}
+
+\input{author_info}

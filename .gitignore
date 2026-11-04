@@ -1,0 +1,59 @@
+# Python 与开发环境
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+build/
+dist/
+
+# 本地凭据与编辑器
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+*.log
+
+# 原始数据、权重、隐状态和运行产物
+data/
+artifacts/
+outputs/
+runs/
+cache/
+.cache/
+.tools/
+models/
+checkpoints/
+results/**/predictions/
+*.pt
+*.pth
+*.safetensors
+*.npy
+*.npz
+
+# TeX 中间文件；保留源码、最终 PDF 与已审查的图表
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+papers/qa/
+deliverables/
+
+# 操作系统
+Thumbs.db
+.DS_Store

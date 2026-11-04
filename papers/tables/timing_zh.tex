@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering\footnotesize
+\caption{实测训练与检测头耗时；种子间取均值。头部延迟不含骨干、分词、PCA及动态特征构造。}\label{tab:timing}
+\begin{tabular}{lrrr}\toprule
+Method & Fit (s) & p50 (ms) & p95 (ms) \\
+\midrule
+Prompt LR & 5.44 & -- & -- \\
+Prefix TF--IDF LR & 29.34 & -- & -- \\
+Current-state LR & 5.67 & -- & -- \\
+Running-mean LR & 5.37 & -- & -- \\
+Dynamic GRU & 36.20 & 0.21 & 0.26 \\
+GRU, states only & 34.16 & 0.21 & 0.26 \\
+GRU, last layer & 42.33 & 0.20 & 0.28 \\
+Dynamic MLP & 31.21 & 0.14 & 0.16 \\
+GRU, stride 4 & 47.50 & 0.21 & 0.27 \\
+GRU, stride 16 & 24.60 & 0.21 & 0.30 \\
+\bottomrule\end{tabular}
+\end{table}

@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering\footnotesize
+\caption{事后探索性校准目标分析；数值为三个固定种子均值（百分比）。阈值由校准集确定，5\%为主设定；比较区间未作多重校正。}\label{tab:review_sensitivity}
+\begin{tabular}{lrrr}\toprule
+Method & $\alpha$ & R@128 & Test FPR \\
+\midrule
+Prefix TF--IDF LR & 1 & 12.9 & 0.3 \\
+Current-state LR & 1 & 18.0 & 1.2 \\
+Dynamic GRU & 1 & 18.5 & 1.0 \\
+Prefix TF--IDF LR & 5 & 28.2 & 1.6 \\
+Current-state LR & 5 & 43.7 & 5.6 \\
+Dynamic GRU & 5 & 38.1 & 3.3 \\
+Prefix TF--IDF LR & 10 & 43.7 & 5.5 \\
+Current-state LR & 10 & 61.7 & 13.5 \\
+Dynamic GRU & 10 & 56.2 & 9.0 \\
+\bottomrule\end{tabular}
+\end{table}

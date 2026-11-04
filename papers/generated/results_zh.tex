@@ -1,0 +1,17 @@
+\paragraph{完整流程比较。}\AchievementDetectionZH{} 提示分组配对不确定性见表~\ref{tab:uncertainty}。
+
+\input{tables/main_zh}
+
+\paragraph{检测器权衡。}表~\ref{tab:main}完整呈现基线比较。静态探针、MLP和循环头在共同校准目标下形成互补的召回率—误报率运行特征，为应用选择检测器提供依据。
+
+\input{tables/alert_positions_zh}
+
+\input{tables/uncertainty_zh}
+
+\paragraph{同题不同结局。}测试集中同一问题同时存在两种最终标签的子集包含97组、207条回答。冻结阈值下，动态GRU与当前状态逻辑回归的Recall@128分别为20.1\%和22.3\%，误报率分别为6.1\%和6.7\%。这一同题子集刻画了两种检测器在共享问题、不同回答结局下的表现。
+
+\paragraph{历史聚合对照。}历史均值逻辑回归的Recall@128为46.1\%，动态GRU相对差值为-8.1个百分点。该对照量化因果历史积累的作用，补充当前状态与学习式循环模型的比较。
+
+\paragraph{不确定性。}表~\ref{tab:uncertainty}保留提示分组配对自助法区间。每次配对抽样在检测器之间保留一致的提示分组和已拟合种子。
+
+\paragraph{预设对照。}动态GRU减去静态探针的Recall@128差值为-5.64个百分点，提示分组95\%区间为[-7.10, -3.93]。静态探针侧重召回覆盖，GRU则具有较低实测误报率，两类运行特征对应不同监测需求。

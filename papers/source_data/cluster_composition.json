@@ -1,0 +1,90 @@
+[
+  {
+    "cluster": 0,
+    "train_n": 703,
+    "train_groups": 465,
+    "train_unsafe": 413,
+    "train_unsafe_rate": 0.5874822190611664,
+    "external_n": 269,
+    "external_groups": 269,
+    "external_unsafe": 29,
+    "external_unsafe_rate": 0.10780669144981413
+  },
+  {
+    "cluster": 1,
+    "train_n": 1496,
+    "train_groups": 649,
+    "train_unsafe": 659,
+    "train_unsafe_rate": 0.4405080213903743,
+    "external_n": 70,
+    "external_groups": 70,
+    "external_unsafe": 14,
+    "external_unsafe_rate": 0.2
+  },
+  {
+    "cluster": 2,
+    "train_n": 1522,
+    "train_groups": 865,
+    "train_unsafe": 807,
+    "train_unsafe_rate": 0.5302233902759527,
+    "external_n": 125,
+    "external_groups": 125,
+    "external_unsafe": 7,
+    "external_unsafe_rate": 0.056
+  },
+  {
+    "cluster": 3,
+    "train_n": 1107,
+    "train_groups": 718,
+    "train_unsafe": 674,
+    "train_unsafe_rate": 0.6088527551942186,
+    "external_n": 1,
+    "external_groups": 1,
+    "external_unsafe": 0,
+    "external_unsafe_rate": 0.0
+  },
+  {
+    "cluster": 4,
+    "train_n": 316,
+    "train_groups": 121,
+    "train_unsafe": 246,
+    "train_unsafe_rate": 0.7784810126582279,
+    "external_n": 15,
+    "external_groups": 15,
+    "external_unsafe": 0,
+    "external_unsafe_rate": 0.0
+  },
+  {
+    "cluster": 5,
+    "train_n": 1711,
+    "train_groups": 839,
+    "train_unsafe": 1348,
+    "train_unsafe_rate": 0.7878433664523671,
+    "external_n": 2,
+    "external_groups": 2,
+    "external_unsafe": 0,
+    "external_unsafe_rate": 0.0
+  },
+  {
+    "cluster": 6,
+    "train_n": 769,
+    "train_groups": 447,
+    "train_unsafe": 165,
+    "train_unsafe_rate": 0.21456436931079323,
+    "external_n": 5,
+    "external_groups": 5,
+    "external_unsafe": 1,
+    "external_unsafe_rate": 0.2
+  },
+  {
+    "cluster": 7,
+    "train_n": 373,
+    "train_groups": 270,
+    "train_unsafe": 248,
+    "train_unsafe_rate": 0.6648793565683646,
+    "external_n": 104,
+    "external_groups": 104,
+    "external_unsafe": 3,
+    "external_unsafe_rate": 0.028846153846153848
+  }
+]

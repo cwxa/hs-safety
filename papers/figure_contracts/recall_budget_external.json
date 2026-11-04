@@ -1,0 +1,25 @@
+{
+  "figure": "recall_budget_external",
+  "generated_utc": "2026-11-04T11:22:06.129292+00:00",
+  "core_conclusion": "Early recall under each method's frozen sequence-level calibration threshold.",
+  "archetype": "single quantitative panel",
+  "backend": "Python/matplotlib",
+  "source_data": "source_data/recall_budget_external.csv",
+  "sources_sha256": {
+    "results\\metrics.json": "8c7de1717f484ea70ade19dabbd26ea379d91a8e35db95feedec90c3a17b6aca",
+    "data\\processed\\audit.json": "6f61a6bf904557ec4bf84fb14fde7eba2ee35b42f35bcf3ea49608cdfe78b016"
+  },
+  "independent_sampling_unit": "prompt group for inferential comparisons",
+  "plotted_unit": "as specified in source rows; responses are not independent repeats",
+  "variability": "Mean +/- one sample SD across completed seeds; single-seed SD is omitted. No bootstrap band is implied.",
+  "multiple_comparison_correction": "None; secondary analyses are exploratory",
+  "font_size_pt": 8,
+  "minimum_source_font_size_pt": 7,
+  "figure_size_inches": [
+    3.45,
+    2.4
+  ],
+  "alignment": "NOT APPLICABLE: one plot-area axes",
+  "final_pdf_QA": "Parent workflow audits final exported PDF",
+  "split": "external"
+}

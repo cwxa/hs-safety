@@ -1,0 +1,422 @@
+[
+  {
+    "model": "prompt_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.22863741339491916
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.22863741339491916
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.22863741339491916
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.22863741339491916
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.22863741339491916
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.22863741339491916
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.22863741339491916
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.22863741339491916
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.22863741339491916
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.22863741339491916
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.22863741339491916
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.22863741339491916
+  },
+  {
+    "model": "text_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.23672055427251731
+  },
+  {
+    "model": "text_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.26385681293302543
+  },
+  {
+    "model": "text_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.2817551963048499
+  },
+  {
+    "model": "text_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.2834872979214781
+  },
+  {
+    "model": "text_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.23672055427251731
+  },
+  {
+    "model": "text_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.26385681293302543
+  },
+  {
+    "model": "text_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.2817551963048499
+  },
+  {
+    "model": "text_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.2834872979214781
+  },
+  {
+    "model": "text_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.23672055427251731
+  },
+  {
+    "model": "text_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.26385681293302543
+  },
+  {
+    "model": "text_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.2817551963048499
+  },
+  {
+    "model": "text_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.2834872979214781
+  },
+  {
+    "model": "static_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.3210161662817552
+  },
+  {
+    "model": "static_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.4105080831408776
+  },
+  {
+    "model": "static_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.437066974595843
+  },
+  {
+    "model": "static_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.4387990762124711
+  },
+  {
+    "model": "static_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.3210161662817552
+  },
+  {
+    "model": "static_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.4105080831408776
+  },
+  {
+    "model": "static_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.437066974595843
+  },
+  {
+    "model": "static_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.4387990762124711
+  },
+  {
+    "model": "static_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.3210161662817552
+  },
+  {
+    "model": "static_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.4105080831408776
+  },
+  {
+    "model": "static_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.437066974595843
+  },
+  {
+    "model": "static_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.4387990762124711
+  },
+  {
+    "model": "mean_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.424364896073903
+  },
+  {
+    "model": "mean_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.4532332563510393
+  },
+  {
+    "model": "mean_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.46131639722863743
+  },
+  {
+    "model": "mean_lr",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.4630484988452656
+  },
+  {
+    "model": "mean_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.424364896073903
+  },
+  {
+    "model": "mean_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.4532332563510393
+  },
+  {
+    "model": "mean_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.46131639722863743
+  },
+  {
+    "model": "mean_lr",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.4630484988452656
+  },
+  {
+    "model": "mean_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.424364896073903
+  },
+  {
+    "model": "mean_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.4532332563510393
+  },
+  {
+    "model": "mean_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.46131639722863743
+  },
+  {
+    "model": "mean_lr",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.4630484988452656
+  },
+  {
+    "model": "gru",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.019630484988452657
+  },
+  {
+    "model": "gru",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.20727482678983833
+  },
+  {
+    "model": "gru",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.3233256351039261
+  },
+  {
+    "model": "gru",
+    "seed": "13",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.3302540415704388
+  },
+  {
+    "model": "gru",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.14665127020785218
+  },
+  {
+    "model": "gru",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.32505773672055427
+  },
+  {
+    "model": "gru",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.37009237875288686
+  },
+  {
+    "model": "gru",
+    "seed": "2026",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.371824480369515
+  },
+  {
+    "model": "gru",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "32",
+    "recall": 0.28752886836027713
+  },
+  {
+    "model": "gru",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "64",
+    "recall": 0.4058891454965358
+  },
+  {
+    "model": "gru",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "128",
+    "recall": 0.44861431870669743
+  },
+  {
+    "model": "gru",
+    "seed": "42",
+    "split": "test",
+    "token_budget": "256",
+    "recall": 0.4503464203233256
+  }
+]

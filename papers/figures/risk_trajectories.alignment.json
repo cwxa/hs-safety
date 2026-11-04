@@ -1,0 +1,13 @@
+{
+  "status": "NOT APPLICABLE",
+  "n_axes": 1,
+  "reason": "Single plot-area figure; no comparable multi-panel grid.",
+  "axes_bounds_inches": [
+    [
+      0.425,
+      0.25299999999999995,
+      2.635,
+      1.771
+    ]
+  ]
+}

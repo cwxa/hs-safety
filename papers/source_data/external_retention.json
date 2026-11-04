@@ -1,0 +1,16 @@
+[
+  {
+    "label": 0,
+    "label_name": "Final Safe",
+    "before": 1441,
+    "after": 537,
+    "retained_percent": 37.265787647467036
+  },
+  {
+    "label": 1,
+    "label_name": "Final Unsafe",
+    "before": 284,
+    "after": 54,
+    "retained_percent": 19.014084507042252
+  }
+]

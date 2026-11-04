@@ -1,0 +1,16 @@
+% 与英文稿逐节对应的中文阅读稿；不把中文译文伪称独立实验。
+\documentclass[conference]{IEEEtran}
+\input{preamble}
+\usepackage{xeCJK}
+\IfFontExistsTF{SimSun}{\setCJKmainfont{SimSun}}{\setCJKmainfont{FandolSong-Regular}}
+\IfFontExistsTF{SimHei}{\setCJKsansfont{SimHei}}{\setCJKsansfont{FandolHei-Regular}}
+\input{generated/experiment_macros}
+\title{基于隐状态流式序列的大模型内容安全数据挖掘与检测研究}
+\author{\IEEEauthorblockN{\AuthorNameZH}\IEEEauthorblockA{\AuthorInstitutionZH}}
+\hypersetup{pdfauthor={\AuthorNameZH}}
+\begin{document}
+\maketitle
+\input{content_zh}
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+\end{document}

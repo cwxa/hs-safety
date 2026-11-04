@@ -1,0 +1,28 @@
+{
+  "figure": "pca_endpoints",
+  "generated_utc": "2026-11-04T11:22:10.211396+00:00",
+  "core_conclusion": "Training-only two-dimensional projection describes final-checkpoint geometry; colors are final labels.",
+  "archetype": "single quantitative panel",
+  "backend": "Python/matplotlib",
+  "source_data": "source_data/pca_endpoints.csv",
+  "sources_sha256": {
+    "results\\metrics.json": "8c7de1717f484ea70ade19dabbd26ea379d91a8e35db95feedec90c3a17b6aca",
+    "data\\processed\\audit.json": "6f61a6bf904557ec4bf84fb14fde7eba2ee35b42f35bcf3ea49608cdfe78b016"
+  },
+  "independent_sampling_unit": "prompt group for inferential comparisons",
+  "plotted_unit": "one retained training response endpoint",
+  "variability": "No error bars: descriptive point cloud with every retained training response displayed.",
+  "multiple_comparison_correction": "None; secondary analyses are exploratory",
+  "font_size_pt": 8,
+  "minimum_source_font_size_pt": 7,
+  "figure_size_inches": [
+    3.45,
+    2.55
+  ],
+  "alignment": "NOT APPLICABLE: one plot-area axes",
+  "final_pdf_QA": "Parent workflow audits final exported PDF",
+  "labels_used_in_fit": false,
+  "all_training_rows_displayed": true,
+  "draw_order": "fixed permutation, seed 42; no convenience subsampling",
+  "fitting": "PCA(2) and KMeans(8) fitted only on training endpoints; KMeans uses all projected dimensions"
+}

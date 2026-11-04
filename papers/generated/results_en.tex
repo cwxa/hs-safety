@@ -1,0 +1,17 @@
+\paragraph{Complete-pipeline comparison.}\AchievementDetectionEN{} Paired prompt-group uncertainty is reported in Table~\ref{tab:uncertainty}.
+
+\input{tables/main}
+
+\paragraph{Detector trade-offs.}Table~\ref{tab:main} reports the full baseline comparison. Static probes, MLPs and recurrent heads offer complementary recall--FPR profiles under the common calibration target, supporting application-specific detector selection.
+
+\input{tables/alert_positions}
+
+\input{tables/uncertainty}
+
+\paragraph{Same-prompt outcomes.}The test subset containing both final labels per prompt has 97 groups and 207 responses. Dynamic GRU and current-state LR attain 20.1\% and 22.3\% Recall@128, at 6.1\% and 6.7\% FPR, respectively, using unchanged thresholds. The matched-prompt subset characterizes how the two detectors respond to different outcomes associated with a shared question.
+
+\paragraph{History-aggregation control.}Running-mean LR obtains 46.1\% Recall@128; the dynamic-GRU difference is -8.1 percentage points. The comparison complements current-state and learned-recurrence baselines by quantifying causal history accumulation.
+
+\paragraph{Uncertainty.}Table~\ref{tab:uncertainty} retains paired prompt-group bootstrap intervals. Each paired draw preserves the prompt groups and fixed fitted seeds across the compared detectors.
+
+\paragraph{Pre-specified contrast.}The dynamic-GRU minus static-probe Recall@128 difference is -5.64 percentage points (95\% prompt-group interval [-7.10, -3.93]). The static probe favors recall coverage, while the GRU has the lower observed test FPR; these operating profiles support different monitoring priorities.

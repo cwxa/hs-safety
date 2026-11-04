@@ -1,0 +1,14 @@
+\begin{table}[t]
+\centering\footnotesize
+\caption{Prompt-group paired bootstrap: Recall@128 differences and 95\% intervals (percentage points).}\label{tab:uncertainty}
+\begin{tabular}{lp{.34\columnwidth}rr}\toprule
+Split & Contrast & $\Delta$ & 95\% CI \\
+\midrule
+test & Dynamic GRU vs. Prompt LR & +15.2 & [+12.7, +17.8] \\
+test & Dynamic GRU vs. Current-state LR & -5.6 & [-7.1, -3.9] \\
+test & Dynamic GRU vs. Prefix TF--IDF LR & +9.9 & [+7.6, +12.2] \\
+external & Dynamic GRU vs. Prompt LR & +12.3 & [+6.7, +18.8] \\
+external & Dynamic GRU vs. Current-state LR & -11.7 & [-20.6, -3.6] \\
+external & Dynamic GRU vs. Prefix TF--IDF LR & +12.3 & [+6.7, +18.8] \\
+\bottomrule\end{tabular}
+\end{table}

@@ -1,0 +1,7 @@
+step,description
+1,Prompt-group partitions: train / dev / calib. / test
+2,"Frozen causal LM: response states, 4 layers"
+3,Train-only PCA: states + causal differences
+4,GRU / matched baselines: final-response risk scores
+5,Calibration maxima: empirical seq.-FPR threshold
+6,Held-out replay: R@128 / FPR / uncertainty

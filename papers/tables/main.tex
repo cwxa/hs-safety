@@ -1,0 +1,13 @@
+\begin{table}[t]
+\centering\footnotesize
+\caption{In-domain detection (\%). Mean $\pm$ sample SD across available seeds; a single completed seed has no SD. Thresholds use only in-domain calibration.}\label{tab:main}
+\begin{tabular}{lrrrr}\toprule
+Method & R@128 & FPR & AUROC & AP \\
+\midrule
+Prompt LR & 22.9 $\pm$ 0.0 & 3.3 $\pm$ 0.0 & 74.4 $\pm$ 0.0 & 80.1 $\pm$ 0.0 \\
+Prefix TF--IDF LR & 28.2 $\pm$ 0.0 & 1.6 $\pm$ 0.0 & 81.1 $\pm$ 0.0 & 86.3 $\pm$ 0.0 \\
+Current-state LR & 43.7 $\pm$ 0.0 & 5.6 $\pm$ 0.0 & 83.1 $\pm$ 0.0 & 86.5 $\pm$ 0.0 \\
+Running-mean LR & 46.1 $\pm$ 0.0 & 6.2 $\pm$ 0.0 & 83.5 $\pm$ 0.0 & 86.5 $\pm$ 0.0 \\
+Dynamic GRU & 38.1 $\pm$ 6.3 & 3.3 $\pm$ 1.0 & 83.6 $\pm$ 0.9 & 87.6 $\pm$ 0.8 \\
+\bottomrule\end{tabular}
+\end{table}

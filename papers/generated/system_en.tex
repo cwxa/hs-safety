@@ -1,0 +1,14 @@
+\paragraph{Matched-length generation.}Across 3 warmed paired trials on the fixed benign demonstration prompt, median baseline and monitor-only generation times are 2.267 and 2.250 s, respectively. The median paired overhead is -0.1\%. Each pair has an identical greedy token-sequence hash; model-loading time is excluded. The paired design profiles checkpoint monitoring within the same generation workload.
+
+The observed paired ratios range from -5.4\% to +6.2\%. The paired measurements place monitored generation close to the unmonitored baseline on the local device.
+
+Across trials, the medians of checkpoint-monitor p50 and p95 latency are 0.82 and 0.89 ms, respectively; monitor-only throughput is 28.4 tokens/s (median), and peak PyTorch allocation is 0.95 GiB. These checkpoint timings include feature construction and detector inference, unlike the detector-head-only table.
+
+\paragraph{Online integration.}The separate guarded demonstration generates 128 tokens and releases 128 after checkpoint decisions; stop status is false. This functional run is complemented by deterministic tests of buffer discard and EOS-tail handling.
+
+The guarded run takes 4.936 s (25.9 tokens/s). The run completes the configured generation budget.
+
+\paragraph{Frozen extraction cost.}The recorded main extraction processes 1,548,168 prompt-plus-response tokens in 723.1 s (2141.0 tokens/s), with peak PyTorch-allocated GPU memory 0.99 GiB. Memory is reported as PyTorch allocation, with throughput measured on the local device.
+
+The main raw-state and projected caches occupy 1837.5 and 132.9 MiB, respectively, including their manifests. Frozen backbone weights are separate from these cache volumes.
+Real-KV replay on 6 held-out responses compares 53 checkpoints with archived offline scores. The maximum score difference is 0.00110, with 0 threshold-decision mismatches. The diagnostic uses the first three sorted IDs per label at lengths 16--128 and the seed-42 GRU.

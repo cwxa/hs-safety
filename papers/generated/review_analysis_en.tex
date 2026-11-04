@@ -1,0 +1,9 @@
+\paragraph{Supplementary ranking and calibration.}
+
+\ReviewRankingEN{} AUROC@128 uses the maximum score within the token budget, with intervals from 1,000 paired prompt-group bootstrap draws. The within-family linear comparison provides complementary evidence about the two feature constructions.
+
+The GRU and static probe have similar budgeted ranking estimates: the AUROC@128 difference is 0.0050, with a 95\% interval of [-0.0019, 0.0123].
+
+Table~\ref{tab:review_sensitivity} compares operating profiles at calibration targets of 1\%, 5\% and 10\%, holding the fitted models fixed and retaining 5\% as the primary setting.\input{tables/review_sensitivity}
+
+The strict pre-completion criterion requires an alarm checkpoint before the answer endpoint and within 128 tokens. With all unsafe responses retained in the denominator, main-test recall is 42.8\% for the static probe and 35.1\% for GRU. This timing view complements the budgeted recall curves.

@@ -1,0 +1,422 @@
+[
+  {
+    "model": "prompt_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.0
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.0
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.0
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.0
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.0
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.0
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.0
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.0
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.0
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.0
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.0
+  },
+  {
+    "model": "prompt_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.0
+  },
+  {
+    "model": "text_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.0
+  },
+  {
+    "model": "text_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.0
+  },
+  {
+    "model": "text_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.0
+  },
+  {
+    "model": "text_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.0
+  },
+  {
+    "model": "text_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.0
+  },
+  {
+    "model": "text_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.0
+  },
+  {
+    "model": "text_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.0
+  },
+  {
+    "model": "text_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.0
+  },
+  {
+    "model": "text_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.0
+  },
+  {
+    "model": "text_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.0
+  },
+  {
+    "model": "text_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.0
+  },
+  {
+    "model": "text_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.0
+  },
+  {
+    "model": "static_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.07407407407407407
+  },
+  {
+    "model": "static_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.16666666666666666
+  },
+  {
+    "model": "static_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.24074074074074073
+  },
+  {
+    "model": "static_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.3148148148148148
+  },
+  {
+    "model": "static_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.07407407407407407
+  },
+  {
+    "model": "static_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.16666666666666666
+  },
+  {
+    "model": "static_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.24074074074074073
+  },
+  {
+    "model": "static_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.3148148148148148
+  },
+  {
+    "model": "static_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.07407407407407407
+  },
+  {
+    "model": "static_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.16666666666666666
+  },
+  {
+    "model": "static_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.24074074074074073
+  },
+  {
+    "model": "static_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.3148148148148148
+  },
+  {
+    "model": "mean_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.05555555555555555
+  },
+  {
+    "model": "mean_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.07407407407407407
+  },
+  {
+    "model": "mean_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.1111111111111111
+  },
+  {
+    "model": "mean_lr",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.12962962962962962
+  },
+  {
+    "model": "mean_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.05555555555555555
+  },
+  {
+    "model": "mean_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.07407407407407407
+  },
+  {
+    "model": "mean_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.1111111111111111
+  },
+  {
+    "model": "mean_lr",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.12962962962962962
+  },
+  {
+    "model": "mean_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.05555555555555555
+  },
+  {
+    "model": "mean_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.07407407407407407
+  },
+  {
+    "model": "mean_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.1111111111111111
+  },
+  {
+    "model": "mean_lr",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.12962962962962962
+  },
+  {
+    "model": "gru",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.0
+  },
+  {
+    "model": "gru",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.018518518518518517
+  },
+  {
+    "model": "gru",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.037037037037037035
+  },
+  {
+    "model": "gru",
+    "seed": "13",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.24074074074074073
+  },
+  {
+    "model": "gru",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.0
+  },
+  {
+    "model": "gru",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.018518518518518517
+  },
+  {
+    "model": "gru",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.05555555555555555
+  },
+  {
+    "model": "gru",
+    "seed": "2026",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.18518518518518517
+  },
+  {
+    "model": "gru",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "32",
+    "recall": 0.05555555555555555
+  },
+  {
+    "model": "gru",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "64",
+    "recall": 0.1111111111111111
+  },
+  {
+    "model": "gru",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "128",
+    "recall": 0.2777777777777778
+  },
+  {
+    "model": "gru",
+    "seed": "42",
+    "split": "external",
+    "token_budget": "256",
+    "recall": 0.35185185185185186
+  }
+]

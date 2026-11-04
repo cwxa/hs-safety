@@ -1,0 +1,219 @@
+\begin{abstract}
+High-dimensional hidden-state streams offer a data source for mining the evolving safety risk of large language model responses. We develop a reproducible workflow integrating data cleaning, dimensionality reduction, feature engineering, sequence classification and cluster analysis. Frozen Qwen2.5 states are compressed by train-only incremental principal component analysis (PCA); state differences and geometric changes describe prefix evolution. Term frequency--inverse document frequency (TF--IDF) and linear probes provide text and representation baselines, while a gated recurrent unit (GRU) models the feature sequence. Independent sequence-level calibration converts scores into streaming decisions, and K-means profiles the structure of response representations. \ReviewRankingEN{} \AbstractResultsEN{} Static and temporal detectors provide distinct recall--false-positive-rate profiles. Shared feature caches and a buffer-check-release interface connect offline data mining with incremental operation, providing an accessible experimental framework for resource-conscious content-safety analysis.
+\end{abstract}
+\begin{IEEEkeywords}
+data mining, principal component analysis, feature engineering, clustering, sequence classification, hidden states, large language models, streaming safety detection
+\end{IEEEkeywords}
+
+\section{Introduction}
+Large language models deliver responses token by token, whereas many safety datasets assign a judgment to the complete answer. This creates a practical learning problem: how can a monitor use the currently visible prefix to identify responses that will ultimately be labelled unsafe, while keeping whole-response false alarms and monitoring cost under control? For example, the same prompt may receive a safe explanation or an unsafe continuation; reading the evolving response adds evidence beyond the question alone.
+
+From a data-mining perspective, each answer is a variable-length multivariate sequence, each checkpoint is a high-dimensional observation, and the final safety judgment is its supervised label. Data cleaning and grouped partitioning establish the analysis population; PCA compresses the observations; temporal feature engineering and classification estimate risk; unsupervised clustering describes recurring representation profiles. These stages organize the study as a complete data-to-pattern-to-decision workflow.
+
+Three design requirements follow. The representation must respect the visible-prefix boundary; the detector must distinguish useful contextual information from the additional value of temporal modeling; and the decision rule must account for repeated checks throughout a response. Under local resource constraints, these requirements also call for compact features and reusable extraction artifacts.
+
+SCM combines fine-grained supervision with hierarchical consistency-aware training~\cite{NEURIPS2025_4e315702}, while Kelp learns temporal risk heads from frozen representations~\cite{li2025kelpstreamingsafeguardlarge}. Building on this foundation, we address the requirements through a common experimental pipeline: causal replay supplies aligned hidden states, train-only projection compresses multi-layer features, matched detector families compare static and temporal information, and independent sequence-level calibration converts scores into streaming decisions. A buffer-check-release interface carries the same features into incremental generation.
+
+The investigation follows three questions. RQ1: what predictive information do hidden states and temporal modeling contribute relative to prompt and prefix-text baselines? RQ2: how does checkpoint frequency change detection coverage and monitoring work? RQ3: how do backbone scale and response source affect the resulting operating profiles? Each question is linked to a controlled comparison and a corresponding results subsection.
+
+The contributions are a reproducible causal representation-mining workflow, measured evidence for detector and checkpoint selection, and an incremental monitoring implementation with traceable artifacts. \AchievementScopeEN{} The evidence establishes compact hidden states as useful risk-ranking features and quantifies the recall--FPR choices offered by static and recurrent heads. Sections~\ref{sec:architecture} and~\ref{sec:protocol} describe the solution; Section~\ref{sec:results} answers the research questions.
+
+\section{Related Work}
+\subsection{Safety Annotation and Response Moderation}
+BeaverTails provides question--answer safety annotations and distinguishes helpfulness from harmlessness~\cite{ji2023beavertails}. Its response-level labels support the eventual-outcome prediction task studied here. We retain the original response judgment and category metadata, with prompt intent and response safety represented as distinct variables.
+
+WildGuard jointly studies prompt intent, response safety and refusal detection~\cite{han2024wildguard}. These complementary targets motivate the prompt-only control and the comparison between prompt information and observed response features.
+
+FineHarm supplies sentence labels and uses a part-of-speech heuristic to derive word labels aligned to tokens~\cite{NEURIPS2025_4e315702}. This fine-grained annotation route complements the complete-response supervision used in the present study.
+
+\subsection{Streaming Monitoring from Internal Representations}
+SCM trains a separate Qwen2.5-based monitor with token and holistic response heads, retaining the token head at inference~\cite{NEURIPS2025_4e315702}. Kelp attaches a lightweight temporal head to a frozen target model and introduces anchored temporal consistency for response-level supervision~\cite{li2025kelpstreamingsafeguardlarge}. These designs connect representation access, supervision granularity and sequential decision making.
+
+Our detector family combines projected states, causal state differences and a standard unidirectional GRU~\cite{cho2014gru}. The response-level objective and modular feature construction support direct comparisons of current state, accumulated history and learned temporal aggregation.
+
+StreamGuard constructs future-risk targets using Monte Carlo continuations~\cite{kavumba2026streamguard}, while online risk-control monitoring calibrates an external verifier signal~\cite{schirmer2026online}. SafeDecoding intervenes through token-probability adjustment during generation~\cite{xu2024safedecoding}. Together, these approaches situate the present work within a broader design space of risk prediction, decision calibration and generation control.
+
+Recent work also explores token-level hidden-state probes~\cite{shu2026stopearly}, pretrained sparse-autoencoder features~\cite{fang2026nextguard} and adaptive depth--time monitoring~\cite{wei2026adtguard}. These approaches extend the representation and supervision design space. The present study focuses on a reproducible small-backbone comparison using shared response partitions and sequence-level calibration.
+
+\subsection{Replay, Native Generation and Transfer}
+StreamGuardBench supplies responses generated by specific target models~\cite{li2025kelpstreamingsafeguardlarge,streamguardbench2025data}. Replaying these responses through a fixed monitoring backbone supports representation comparisons across response sources. We record the response-generating source and the monitoring encoder separately.
+
+External evaluation keeps the fitted detector and its threshold fixed while changing the response source, prompting distribution and annotation process. This design measures transport of the complete monitoring pipeline across data sources.
+
+\section{Task Definition and Evaluation Contract}
+\subsection{Observed Prefix and Prediction Target}
+Let $q_i$ be a prompt and $r_i=(r_{i,1},\ldots,r_{i,T_i})$ an annotated response. The binary label $Y_i$ indicates whether the complete response is unsafe. At response checkpoint $t\leq T_i$, a detector receives only the prompt and the first $t$ response tokens and returns
+\begin{equation}
+ \risk_{i,t}=f_\theta(q_i,r_{i,1:t}).
+ \label{eq:target}
+\end{equation}
+Equation~\ref{eq:target} defines a ranking score for the final response label $Y_i=1$, conditional on the observed prefix. Class-weighted training emphasizes the prediction target, and the operational threshold is determined by the separate calibration stage.
+
+Checkpoints form an ordered set $\mathcal T_i$. The full endpoint $T_i$ is always included. For threshold $\tau$, the alarm location and sequence decision are
+\begin{align*}
+ A_i(\tau)&=\min\{t\in\mathcal T_i:\risk_{i,t}>\tau\},\\
+ D_i(\tau)&=\mathbb{1}\{\max_{t\in\mathcal T_i}\risk_{i,t}>\tau\},
+\end{align*}
+Here $A_i=\infty$ denotes an untriggered response. The strict $>$ comparison is saved with the threshold and reused throughout calibration, replay and online inference.
+
+\subsection{Primary Endpoint}
+For observed-token budget $B$, early recall is
+\begin{equation}
+ R_B=\frac{\sum_i\mathbb{1}\{Y_i=1,\ A_i\leq\min(B,T_i)\}}
+ {\sum_i\mathbb{1}\{Y_i=1\}}.
+ \label{eq:recall}
+\end{equation}
+The primary endpoint is $R_{128}$, with secondary budgets of 32, 64 and 256 tokens. A budget includes all checkpoints observed up to $\min(B,T_i)$; shorter responses contribute their true endpoint. Supplementary timing analysis additionally requires the alarm checkpoint to precede the response endpoint.
+
+Sequence-level false-positive rate (FPR) is the proportion of safe complete responses for which $D_i=1$. We also report precision, recall and F1 from sequence decisions and ranking measures from the maximum response score. An apparently small per-checkpoint error can accumulate across many checkpoints, so threshold calibration and false-positive reporting both operate at the sequence level.
+
+Alarm-location summaries describe detected unsafe responses and are reported alongside recall. The normalized location $A_i/T_i$ provides a response-relative timing measure during evaluation; complete response length is used only to calculate this metric.
+
+\section{Architecture and Data Flow}\label{sec:architecture}
+\begin{figure*}[t]
+\centering
+\IfFileExists{figures/architecture.pdf}{\includegraphics[width=.98\textwidth]{figures/architecture.pdf}}{\fbox{Architecture diagram pending report generation.}}
+\caption{Experimental data flow. Detector features are fitted only on training records; test labels do not select models or thresholds. Test text is used only for the disclosed overlap audit during corpus construction. The schematic connects the experiment stages and their artifacts.}
+\label{fig:architecture}
+\end{figure*}
+
+The architecture implements three linked steps. First, grouped data preparation and causal extraction define what information is available at each checkpoint. Second, projection and matched detector families test how that information should be represented and aggregated. Third, sequence-level calibration and buffered release translate scores into operational decisions. This progression connects the prediction problem to both the comparative experiments and the online interface.
+
+\subsection{Data Cleaning and Grouped Partitioning}
+The primary source is the BeaverTails 30k training partition. The configured target allocation is 8,000 training responses, 1,000 development responses and 1,000 calibration responses, subject to eligibility and prompt-group constraints. The official test partition supplies all retained eligible test responses. These are design allocations; observed retained counts are generated from the processed files in Table~\ref{tab:dataset}.
+
+Records store an identifier, normalized prompt group, split, source, response label, available categories, text, token identifiers and response length. Normalized prompt groups prevent multiple answers to the same normalized question from crossing partitions. The official tests receive priority: matching prompts and response templates are removed from the candidate training pool. Character TF--IDF nearest-neighbor comparison also removes candidate prompt groups close to test prompts at similarity 0.92. This text-only audit transform is not reused by the detector and reads no test labels. Exact response templates are additionally isolated across training, development and calibration. Retained identifiers and source revisions make these decisions inspectable independently of training.
+
+The configured tokenizer applies eligibility limits of 256 prompt tokens and 512 response tokens. Eligible responses retain their complete text and original labels. The audit records length exclusions, invalid records, class counts and retained sample identifiers.
+
+The external source is the original StreamGuardBench \texttt{wildguard\_qwen3\_8b} test partition, identified by an immutable dataset revision~\cite{streamguardbench2025data}. Preparation retains the original response label and uses prompt and response text as predictor inputs. Duplicate conflicts give priority to held-out tests, and all source revisions, exclusions and retained records are preserved in the audit.
+
+\input{tables/dataset}
+\input{generated/data_selection_en}
+\resultfigure{data_class_balance}{Class composition of retained responses. Counts refer to responses; prompt-group counts are reported separately in Table~\ref{tab:dataset}. Bars show the retained response counts by final label.}{Dataset composition awaits processed records.}
+\resultfigure{external_retention}{Class-specific retention of the external test source after eligibility filtering. Labels give retained/original counts. Differential retention changes the evaluation population.}{External eligibility audit is pending.}
+
+\subsection{Frozen Causal Feature Extraction}
+The feature backbone is Qwen2.5-0.5B-Instruct~\cite{qwen2024qwen25}. Its weights remain frozen, and FP16 extraction reduces the activation footprint. We sample returned hidden-state indices 6, 12, 18 and 24; the final index includes the backbone's terminal RMSNorm. Prompt formatting and tokenizer identity are fixed across partitions. Extraction uses the causal attention structure: the representation of a response position depends only on its prompt and preceding visible response context.
+
+Teacher-forced replay computes monitoring representations of each recorded answer under causal attention. For the external Qwen3-8B responses, the encoder is the frozen Qwen2.5 monitoring model. This setup separates representation extraction from the response source and enables controlled detector comparisons.
+
+Raw features are cached at a base stride of four response tokens, with the final token appended if needed. The principal detector uses stride eight; stride-four and stride-sixteen variants reuse the same cache. This design separates expensive backbone extraction from the relatively inexpensive detector comparisons. Cache metadata records layer order, token positions and preprocessing identity to prevent a detector from silently consuming a different representation.
+
+\subsection{Incremental PCA and Temporal Feature Engineering}
+For layer $\ell$, let $h^{(\ell)}_{i,t}\in\mathbb R^d$ be a causal hidden state. Incremental principal component analysis (PCA) fits a 64-dimensional projection using training responses only. PCA summarizes covariance structure along orthogonal high-variance directions~\cite{jolliffe2016pca}; fitting it in batches supports memory-conscious processing of checkpoint observations. Its role here is unsupervised feature compression before supervised classification. At most eight checkpoints are sampled from each training answer, capping the contribution of long responses. A residual fitting batch with fewer than 64 rows is omitted and counted in metadata; these responses remain available for transformation and detector training. Each layer is transformed separately:
+\begin{equation*}
+ z^{(\ell)}_{i,t}=\operatorname{diag}(\max(\lambda_\ell,\epsilon))^{-1/2}
+ P_\ell(h^{(\ell)}_{i,t}-\mu_\ell).
+\end{equation*}
+Here $\lambda_\ell$ contains the training explained variances; division by their square roots whitens the projected states, with a numerical floor $\epsilon=10^{-8}$. The fitted means, projections and variances are reused unchanged for development, calibration and both tests. This is an inductive experiment; fitting PCA on the combined dataset would introduce a transductive dependency even without labels.
+
+\PCAVarianceEN{}
+
+At each selected layer, we concatenate the whitened state $z_t$, difference $z_t-z_{t^-}$, cosine change $1-\cos(z_t,z_{t^-})$, and norm change $\|z_t\|_2-\|z_{t^-}\|_2$. The four-layer input has $4(64+64+1+1)=520$ dimensions; the last-layer ablation has 130. All change features are zero at the first checkpoint. When stride changes, differences are recomputed between the actually selected checkpoints rather than subsampled from a different stride. Feature scaling is also fit only on training checkpoints with response-balanced sample weights. This keeps every data-dependent transformation upstream of validation and threshold selection.
+
+\subsection{Detectors and Matched Baselines}
+The main temporal model is a single-layer unidirectional GRU with hidden size 64 and a linear scalar output. For feature vector $x_{i,t}$ and recurrent state $s_{i,t}$,
+\begin{equation*}
+ s_{i,t}=\operatorname{GRU}(x_{i,t},s_{i,t^-}),\quad
+ \risk_{i,t}=\sigma(w^\top s_{i,t}+b),
+\end{equation*}
+where $t^-$ is the preceding checkpoint. The hidden state resets at every response boundary. Right padding is excluded from supervision and evaluation; it cannot affect earlier valid outputs of the unidirectional network.
+
+Four baselines test specific alternative explanations. Prompt-only logistic regression measures how much risk is predictable before reading the response. Prefix TF--IDF logistic regression uses the prompt and currently visible response text with train-only word and character vocabularies. Current-state logistic regression tests whether the present projected representation is sufficient. Running-mean logistic regression tests causal history aggregation without learned recurrence. These models use the same final-response target and evaluation rule.
+
+The text representation concatenates word 1--2-grams and within-word character 3--5-grams, each capped at 20,000 features, with sublinear term frequency. Linear models use $C=1$, response-balanced class weights and the liblinear solver with a 500-iteration cap.
+
+Ablations remove state-change features, retain the final selected layer, replace recurrent aggregation with a current-checkpoint MLP, or use checkpoint strides of four and sixteen tokens. These variants characterize feature construction and aggregation choices under the common data and calibration protocol.
+
+\subsection{Incremental Monitoring Contract}
+The online interface consumes each token before computing its checkpoint state. It buffers the current token block, releases it after a non-alert decision, and discards the block and stops generation after an alert. A final partial block is checked at EOS, and every response resets detector and feature-builder state.
+
+\section{Training, Calibration and Uncertainty}\label{sec:protocol}
+\subsection{Response-Balanced Weak Prefix Supervision}
+Up to eight evenly spaced checkpoints per training response, including its endpoint, contribute supervised loss. If $\mathcal S_i$ is this selected set, the neural objective is
+\begin{equation}
+ \mathcal L=\frac{1}{N}\sum_{i=1}^N\frac{1}{|\mathcal S_i|}
+ \sum_{t\in\mathcal S_i}\operatorname{BCE}_{w_+}(a_{i,t},Y_i),
+ \label{eq:loss}
+\end{equation}
+where $a$ denotes the pre-sigmoid logit and $w_+=N_0/N_1$ weights positive responses. The inner average prevents long answers from receiving more loss weight merely because they contain more checkpoints. Linear models likewise use inverse-prefix-count sample weights and response-count class weights.
+
+Equation~\ref{eq:loss} implements response-balanced weak prefix supervision. Each checkpoint predicts the same eventual outcome, while prompt-only controls and feature ablations characterize the contribution of the available information. The objective trains scores across the observed sequence using the shared response target.
+
+Neural models use AdamW with configured learning rate $10^{-3}$ and weight decay $10^{-4}$, batch size 32, gradient clipping at 1.0 and at most 20 epochs. Development maximum-score ROC AUC selects checkpoints, with patience three. The seeds 13, 42 and 2026 are specified in advance. The development set selects model states; the distinct calibration set selects operational thresholds. Test measurements do not select either.
+
+\subsection{Empirical Sequence-Level Calibration}
+For each safe calibration response, define $M_i=\max_t\risk_{i,t}$. Sort its $n_0$ values as $M_{(1)}\leq\cdots\leq M_{(n_0)}$. With target $\alpha=0.05$ and $k=\lfloor\alpha n_0\rfloor$, the implemented threshold is
+\begin{equation*}
+ \tau=M_{(n_0-k)}.
+\end{equation*}
+Under the strict $>$ alarm rule, at most $k$ safe calibration responses cross the threshold; tied values can produce a smaller empirical rate. Test performance is reported through the resulting recall and measured sequence-level FPR.
+
+Each method and seed receives a threshold from the same calibration procedure and target, accommodating differences in score scale. External evaluation carries forward the fitted detector and its in-domain threshold.
+
+\subsection{Grouped Paired Estimation}
+Point estimates are summarized by the mean and sample standard deviation across fixed seeds. Prompt groups define the resampling unit, preserving the relationship between answers to the same question during uncertainty estimation.
+
+The paired bootstrap draws prompt groups with replacement 1,000 times and retains all answers in each selected group. Each draw is shared across the compared methods and their common seeds, with scores and thresholds fixed. Contrasts are challenger minus reference, and 95\% percentile intervals use the 2.5th and 97.5th percentiles.
+
+Recall@128 defines the primary contrast. Secondary metrics, ablations and exploratory sensitivity analyses are identified in their tables and archived with the complete per-seed measurements.
+
+\section{Experimental Results}\label{sec:results}
+The results answer the three research questions in order, followed by system measurements and exploratory representation analysis. Recall is interpreted jointly with measured test FPR under the common 5\% calibration target.
+\subsection{RQ1: Representation and Detector Selection}
+\input{generated/results_en}
+\input{generated/review_analysis_en}
+
+\resultfigure{recall_budget_test}{Unsafe-response recall at visible-token budgets on the in-domain test split. Points and error bars show means and one sample SD across completed seeds; a single seed has no SD. Thresholds remain frozen.}{No completed recall curves are available.}
+
+\subsection{RQ2: Checkpoint Frequency and Feature Ablations}
+Table~\ref{tab:ablation} and the ablation figure compare feature, aggregation and stride choices. States-only GRU retains recurrence while removing changes; the dynamic MLP retains the input features while replacing memory. The stride comparison changes the next permitted alarm and the number of scoring operations, with dynamic features recomputed at each stride. These comparisons identify practical design choices within the same extraction and calibration pipeline.
+\StrideResultsEN{}
+\input{tables/ablation}
+\resultfigure{ablations}{Measured Recall@128 for temporal, feature and checkpoint-stride comparisons. Bars and errors show means and one sample SD across completed seeds, respectively. Each setting uses the common response partitions and calibration procedure.}{Ablation measurements are pending.}
+
+\subsection{RQ3: Backbone Scale and Response-Source Transfer}
+The scale experiment changes the monitoring backbone while keeping response partitions fixed. The external experiment changes the response source while carrying forward the fitted detector and threshold. Together, they distinguish representation scaling from transport of the complete decision rule.
+\AchievementScaleEN{}
+\input{generated/transfer_en}
+\resultfigure{recall_budget_external}{External early recall with unchanged in-domain thresholds. Error bars show one seed SD, as in the in-domain plot. This is response-source transfer under replay.}{External measurements are pending.}
+
+\subsection{System Feasibility and Incremental Operation}
+System measurements connect the detection study to local execution: shared caches amortize backbone extraction, checkpoint timings quantify added monitoring work, and incremental replay checks score consistency between offline and KV-based operation.
+\input{tables/timing}
+\input{generated/system_en}
+\resultfigure{risk_trajectories}{Deidentified example score trajectories selected deterministically from stored predictions. Colors identify final response labels, and each curve follows the observed response checkpoints.}{Prediction trajectories are not yet available.}
+
+\subsection{PCA Visualization and K-means Cluster Analysis}
+The exploratory analysis complements supervised prediction with unsupervised pattern discovery. A second PCA provides a two-dimensional display of training endpoints, while K-means partitions their full projected representations by within-cluster squared distance~\cite{lloyd1982quantization}. Comparing the final-label composition of these clusters summarizes how response risk is distributed across representation groups.
+\input{generated/exploration_en}
+\resultfigure{pca_endpoints}{Training-only PCA display of every retained training endpoint. Colors identify final response labels; the projection is fitted on all retained training endpoints. Point order follows a fixed random permutation.}{Exploratory PCA awaits the complete training feature cache.}
+\resultfigure{cluster_composition}{Descriptive unsafe-response proportions within eight train-fitted endpoint clusters. K-means uses all projected state dimensions; external assignments use the same centers. Sample and group counts accompany the source data.}{Cluster exploration awaits projected endpoint features.}
+
+\section{Discussion and Research Outlook}
+\subsection{Representation Mining and Detector Selection}
+The experiments connect compact hidden-state representations with practical detector choices. Static probes favor response coverage, while the GRU operates at a lower observed false-positive rate under the common calibration rule. The MLP and states-only controls further distinguish the effects of feature construction and sequence aggregation. Together, these operating profiles support selecting a detector according to the application's recall, false-alarm and resource priorities.
+
+A useful next step is a factorial comparison with capacity-matched prompt-only neural heads and shared optimization budgets. The present prompt-to-GRU contrast varies both representation and classifier structure; matched-capacity experiments would separate these contributions more precisely. Representation interventions and source-balanced studies could further characterize cues associated with refusal style, response length and semantic risk.
+
+\subsection{Category Coverage and Data Expansion}
+\input{generated/error_directions_en}
+These category patterns motivate targeted collection and annotation for lower-recall risk domains. The current English cohorts use 256-token prompt and 512-token response limits, with 54 unsafe responses retained in the external test. Extending coverage to longer responses, additional generation sources and multilingual data would support more detailed transfer estimates and category-specific evaluation. Length-stratified sampling and consistent annotation policies would help distinguish source effects from response composition.
+
+\subsection{From Response Forecasting to Native Intervention}
+The current supervision describes final response safety, and the monitoring states are extracted through causal replay. \TimingProfileEN{} A natural extension is to combine prefix-level human annotation with independently labelled native generations. This would connect response-level forecasting, harm-onset localization and user-visible release decisions within one evaluation design.
+
+The buffered interface and KV diagnostics provide a practical basis for this extension. Randomized stop-versus-continue comparisons, broader response-length coverage and repeated end-to-end timing trials would characterize safety--utility trade-offs and deployment latency. The existing benign generation run and six-response numerical diagnostic supply functional evidence for the implementation; the next evaluation stage can measure intervention outcomes directly.
+
+\subsection{Calibration and Reproducible Generalization}
+The empirical calibration target and the measured test FPR serve complementary roles: one sets the operating rule, and the other describes its behavior on held-out responses. Group bootstrap intervals summarize evaluation-sample variation for the fitted systems. Repeated training and calibration resampling, expanded external cohorts and risk-control calibration would extend uncertainty characterization to new study populations. Foundation-model contamination audits would add a further layer of provenance beyond probe-level group isolation.
+
+All configurations, fitted transformations, model states, thresholds and prediction trajectories are archived with shared numeric sources for both manuscripts. This artifact structure supports cumulative comparison: new data, detector heads and calibration strategies can be evaluated within the same causal feature and reporting contracts.
+
+\section{Conclusion}
+Streaming response-risk prediction requires informative prefix features, a whole-response decision rule and affordable repeated inference. This study addresses these requirements through data cleaning, train-only incremental PCA, temporal feature engineering, lightweight sequence classification and sequence-level calibration connected to buffered generation. K-means and two-dimensional PCA additionally summarize the organization of response representations. \ReviewRankingEN{} The detector comparison identifies a practical choice: static probes favor recall coverage, while GRU operates at a lower observed test FPR. Checkpoint ablations quantify how monitoring frequency changes coverage, and the scale experiment shows how a larger frozen backbone strengthens the static-probe result. \AchievementScaleEN{} Shared caches and measured incremental operation make this workflow usable on local hardware. Future work will extend prefix annotation, source coverage and native-generation evaluation within the same reproducible framework.
+
+\appendices
+\section{Reproduction and Artifact Contract}
+Reproduction uses the staged command-line interface and frozen configuration signatures. Incompatible caches, preprocessors, weights or thresholds are rejected. Prediction rows retain response IDs, prompt groups, labels, checkpoint positions and scores, allowing paired estimation to verify alignment before resampling. Both manuscripts share numeric artifacts, vector figures, source data and bibliography; SHA-256 manifests link them to the archived measurements. Detailed interfaces, statistical edge cases and execution instructions are supplied with the code, unit tests and reproduction guide.

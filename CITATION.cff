@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite this repository and the relevant upstream resources."
+type: software
+title: "HS Safety: Mining Streaming Hidden-State Sequences for Content Safety Detection in Large Language Models"
+version: 0.1.0
+date-released: 2026-11-04
+authors:
+  - family-names: Chen
+    given-names: Weixin
+    affiliation: Nanjing University of Posts and Telecommunications
+repository-code: https://github.com/cwxa/hs-safety
+url: https://github.com/cwxa/hs-safety
+license: MIT
+keywords:
+  - data mining
+  - principal component analysis
+  - feature engineering
+  - clustering
+  - sequence classification
+  - hidden states
+  - large language models
+  - streaming safety detection

@@ -1,0 +1,6 @@
+\paragraph{Backbone scale.}Table~\ref{tab:scale} compares frozen 0.5B and 1.5B representations on identical response partitions. The 1.5B model uses returned hidden-state indices 7, 14, 21 and 28, with the same per-layer projection dimension and training protocol. Both configurations encode the same response partitions.\input{tables/scale}
+
+\input{tables/external}
+
+\paragraph{Transfer boundary.}The external results use the frozen in-domain threshold. They therefore test transport of the complete scoring-and-threshold rule. Differences in source models, annotation policies and response lengths can each contribute to a transfer gap.
+External GRU detections within 128 tokens are 2, 15, 3 out of 54 unsafe responses for seeds 13, 42 and 2026. Seed 42 gives 15/54, with a descriptive Wilson 95\% interval of [17.6, 40.9]\%. The archive provides per-seed counts and intervals for both recall and FPR.

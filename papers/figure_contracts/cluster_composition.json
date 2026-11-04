@@ -1,0 +1,26 @@
+{
+  "figure": "cluster_composition",
+  "generated_utc": "2026-11-04T11:22:10.890083+00:00",
+  "core_conclusion": "Outcome composition is summarized within train-fitted endpoint clusters, without using labels to fit clusters.",
+  "archetype": "single quantitative panel",
+  "backend": "Python/matplotlib",
+  "source_data": "source_data/cluster_composition.csv",
+  "sources_sha256": {
+    "results\\metrics.json": "8c7de1717f484ea70ade19dabbd26ea379d91a8e35db95feedec90c3a17b6aca",
+    "data\\processed\\audit.json": "6f61a6bf904557ec4bf84fb14fde7eba2ee35b42f35bcf3ea49608cdfe78b016"
+  },
+  "independent_sampling_unit": "prompt group for inferential comparisons",
+  "plotted_unit": "cluster composition of retained responses; source data include response and prompt-group counts",
+  "variability": "No error bars: descriptive rates, no inferential claim or independent-response assumption.",
+  "multiple_comparison_correction": "None; secondary analyses are exploratory",
+  "font_size_pt": 8,
+  "minimum_source_font_size_pt": 7,
+  "figure_size_inches": [
+    3.45,
+    2.4
+  ],
+  "alignment": "NOT APPLICABLE: one plot-area axes",
+  "final_pdf_QA": "Parent workflow audits final exported PDF",
+  "selection": "all eight clusters; external empty clusters remain missing",
+  "labels_used_in_fit": false
+}

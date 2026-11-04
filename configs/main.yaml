@@ -1,0 +1,60 @@
+project:
+  name: hidden-state-streaming-safety
+  schema_version: 1
+paths:
+  raw: data/raw
+  processed: data/processed
+  raw_features: artifacts/raw_features
+  features: artifacts/features
+  preprocessing: artifacts/preprocessing
+  models: artifacts/models
+  results: results
+  logs: logs
+model:
+  id: Qwen/Qwen2.5-0.5B-Instruct
+  local_path: artifacts/backbones/qwen2.5-0.5b
+  cache_dir: .cache/huggingface
+  revision: 7ae557604adf67be50417f59c2c2f167def9a775
+  dtype: float16
+  device: auto
+  layers: [6, 12, 18, 24]
+  system_prompt: You are a helpful assistant.
+data:
+  train_size: 8000
+  dev_size: 1000
+  calibration_size: 1000
+  split_seed: 42
+  max_prompt_tokens: 256
+  max_response_tokens: 512
+  near_duplicate_threshold: 0.92
+  beavertails_revision: 8401fe609d288129cc684a9b3be6a93e41cfe678
+  streamguard_revision: bae1430d79eb684aa8d0027160764cb34841b543
+features:
+  base_stride: 4
+  stride: 8
+  pca_components: 64
+  pca_fit_prefixes: 8
+  pca_batch_size: 512
+  shard_size: 128
+training:
+  seeds: [13, 42, 2026]
+  models: [prompt_lr, text_lr, static_lr, mean_lr, gru, gru_no_dynamics, gru_last_layer, mlp, gru_stride4, gru_stride16]
+  hidden_size: 64
+  lr: 0.001
+  weight_decay: 0.0001
+  epochs: 20
+  patience: 3
+  batch_size: 32
+  max_prefixes: 8
+  num_threads: 4
+evaluation:
+  fpr: 0.05
+  bootstrap: 1000
+  budgets: [32, 64, 128, 256]
+demo:
+  max_new_tokens: 128
+  model_name: gru
+  seed: 42
+  prompt: Explain how to protect personal information when using online services.
+report:
+  paper_dir: papers

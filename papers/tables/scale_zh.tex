@@ -1,0 +1,12 @@
+\begin{table}[t]
+\centering\footnotesize
+\caption{相同样本下的骨干规模验证（百分比）；各规模使用独立训练与校准工件。}\label{tab:scale}
+\begin{tabular}{llrrr}\toprule
+Size & Method & R@128 & FPR & Ext. R@128 \\
+\midrule
+0.5B & Current-state LR & 43.7 $\pm$ 0.0 & 5.6 $\pm$ 0.0 & 24.1 $\pm$ 0.0 \\
+0.5B & Dynamic GRU & 38.1 $\pm$ 6.3 & 3.3 $\pm$ 1.0 & 12.3 $\pm$ 13.4 \\
+1.5B & Current-state LR & 54.0 $\pm$ 0.0 & 5.8 $\pm$ 0.0 & 25.9 $\pm$ 0.0 \\
+1.5B & Dynamic GRU & 49.6 $\pm$ 4.6 & 4.9 $\pm$ 1.7 & 17.3 $\pm$ 2.8 \\
+\bottomrule\end{tabular}
+\end{table}

@@ -1,0 +1,18 @@
+{
+  "cache_storage": {
+    "raw_features": {
+      "files": 329,
+      "bytes": 1926808537
+    },
+    "features": {
+      "files": 329,
+      "bytes": 139385240
+    }
+  },
+  "generation_trials": 3,
+  "note": "Cache sizes include manifests; backbone weights and Python/TeX environments are separate.",
+  "median_trial_monitor_p50_ms": 0.8235999994212762,
+  "median_trial_monitor_p95_ms": 0.8917400007703691,
+  "maximum_trial_peak_gpu_gib": 0.9453601837158203,
+  "median_monitor_only_tokens_per_second": 28.442281566938348
+}

@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-04T11:22:10.927629+00:00",
+  "task": "final_response_risk_prediction",
+  "target_fpr": 0.05,
+  "config": {
+    "project": {
+      "name": "hidden-state-streaming-safety",
+      "schema_version": 1
+    },
+    "paths": {
+      "raw": "data/raw",
+      "processed": "data/processed",
+      "raw_features": "artifacts/raw_features",
+      "features": "artifacts/features",
+      "preprocessing": "artifacts/preprocessing",
+      "models": "artifacts/models",
+      "results": "results",
+      "logs": "logs"
+    },
+    "model": {
+      "id": "Qwen/Qwen2.5-0.5B-Instruct",
+      "local_path": "artifacts/backbones/qwen2.5-0.5b",
+      "cache_dir": ".cache/huggingface",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "dtype": "float16",
+      "device": "auto",
+      "layers": [
+        6,
+        12,
+        18,
+        24
+      ],
+      "system_prompt": "You are a helpful assistant."
+    },
+    "data": {
+      "train_size": 8000,
+      "dev_size": 1000,
+      "calibration_size": 1000,
+      "split_seed": 42,
+      "max_prompt_tokens": 256,
+      "max_response_tokens": 512,
+      "near_duplicate_threshold": 0.92,
+      "beavertails_revision": "8401fe609d288129cc684a9b3be6a93e41cfe678",
+      "streamguard_revision": "bae1430d79eb684aa8d0027160764cb34841b543"
+    },
+    "features": {
+      "base_stride": 4,
+      "stride": 8,
+      "pca_components": 64,
+      "pca_fit_prefixes": 8,
+      "pca_batch_size": 512,
+      "shard_size": 128
+    },
+    "training": {
+      "seeds": [
+        13,
+        42,
+        2026
+      ],
+      "models": [
+        "prompt_lr",
+        "text_lr",
+        "static_lr",
+        "mean_lr",
+        "gru",
+        "gru_no_dynamics",
+        "gru_last_layer",
+        "mlp",
+        "gru_stride4",
+        "gru_stride16"
+      ],
+      "hidden_size": 64,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "epochs": 20,
+      "patience": 3,
+      "batch_size": 32,
+      "max_prefixes": 8,
+      "num_threads": 4
+    },
+    "evaluation": {
+      "fpr": 0.05,
+      "bootstrap": 1000,
+      "budgets": [
+        32,
+        64,
+        128,
+        256
+      ]
+    },
+    "demo": {
+      "max_new_tokens": 128,
+      "model_name": "gru",
+      "seed": 42,
+      "prompt": "Explain how to protect personal information when using online services."
+    },
+    "report": {
+      "paper_dir": "papers"
+    }
+  },
+  "metrics_sha256": "8c7de1717f484ea70ade19dabbd26ea379d91a8e35db95feedec90c3a17b6aca",
+  "metrics_file": "results\\metrics.json",
+  "counts": [
+    {
+      "split": "calibration",
+      "n": 1001,
+      "unsafe": 563,
+      "groups": 275,
+      "median_tokens": 65.0,
+      "path": "data\\processed\\calibration.jsonl",
+      "sha256": "c501b943c87231a5a0a85affd192d9fc7707ce4e4a0aa53499116da785aa97ff"
+    },
+    {
+      "split": "dev",
+      "n": 1003,
+      "unsafe": 551,
+      "groups": 282,
+      "median_tokens": 63.0,
+      "path": "data\\processed\\dev.jsonl",
+      "sha256": "27d3d2a50692cc0c7a02155c82e1d2cf62446108b2be3d98d17b1eab814fdd93"
+    },
+    {
+      "split": "external",
+      "n": 591,
+      "unsafe": 54,
+      "groups": 591,
+      "median_tokens": 170.0,
+      "path": "data\\processed\\external.jsonl",
+      "sha256": "d6df9789f3348351178b08b3566a1854d11d1428684fa34a43b96cedfb14f8f7"
+    },
+    {
+      "split": "test",
+      "n": 3018,
+      "unsafe": 1732,
+      "groups": 2524,
+      "median_tokens": 66.0,
+      "path": "data\\processed\\test.jsonl",
+      "sha256": "7498460c936c8d463c72e43948a26ce96443293efb3fd59791af2d0807fad16f"
+    },
+    {
+      "split": "train",
+      "n": 7997,
+      "unsafe": 4560,
+      "groups": 2211,
+      "median_tokens": 67.0,
+      "path": "data\\processed\\train.jsonl",
+      "sha256": "927d3680aba0a54d755cece769580347e334f6c2ee030445d02f86fbadb82ff3"
+    }
+  ],
+  "completed_gru_seeds": [
+    "13",
+    "2026",
+    "42"
+  ],
+  "figures": [
+    "architecture",
+    "data_class_balance",
+    "external_retention",
+    "recall_budget_test",
+    "recall_budget_external",
+    "ablations",
+    "risk_trajectories",
+    "pca_endpoints",
+    "cluster_composition"
+  ],
+  "experiment_signature": "7052e6c1c49857120c1060bc67f6b1d46d7598bd88375555796405474ece5c12",
+  "source_revisions": {
+    "streamguardbench": "bae1430d79eb684aa8d0027160764cb34841b543",
+    "beavertails": "8401fe609d288129cc684a9b3be6a93e41cfe678",
+    "backbone": "7ae557604adf67be50417f59c2c2f167def9a775"
+  },
+  "additional_measurement_hashes": {
+    "results\\scale\\metrics.json": "204bf00594b46a757f42f8476d4ff44b8cb2f00e13dd87db5a2e2472fb60545d",
+    "results\\generation_benchmark.json": "cf487f4580e5836022fe1e02739c98eff58420ed147fb1728438f36da4e35b80",
+    "results\\online_demo.json": "003da456f3bc5d777d3d39d5988f187ccb5f157dbc4186a2f956bf0b795c33c4",
+    "results\\extraction_timing.json": "1f1ac6fa07b0effb1d11eb52df7c4e490ad7b3ee5b62c496960c5e1cc84c276d",
+    "results\\matched_prompt_subset.json": "32cd426e54ba8c26aeb5d65f8566656706a9a8b241cbc85542bd67bd3c714c37",
+    "results\\scale\\matched_prompt_subset.json": "6417b9a1150cc4aa6874827720abde34353f6df6d724a5d8a01937709cd24c21",
+    "results\\review_robustness.json": "28ce4cba7304f17e2c2c8096b8ed76514a35b712e5a4f0d58066bff4fd390584",
+    "results\\streaming_score_alignment.json": "7f2ec2c1f0813184e33b6da288bfc41d43547688327cf008db2f7fcd69203831",
+    "data\\processed\\source_annotations.manifest.json": "c5c1f4d3ff9c653a213f6dee87db431b4e9a77a5f1d8882b1335ac51adc4017a"
+  }
+}

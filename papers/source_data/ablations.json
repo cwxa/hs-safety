@@ -1,0 +1,92 @@
+[
+  {
+    "model": "gru",
+    "seed": "13",
+    "recall_at_128": 0.3233256351039261
+  },
+  {
+    "model": "gru",
+    "seed": "2026",
+    "recall_at_128": 0.37009237875288686
+  },
+  {
+    "model": "gru",
+    "seed": "42",
+    "recall_at_128": 0.44861431870669743
+  },
+  {
+    "model": "gru_no_dynamics",
+    "seed": "13",
+    "recall_at_128": 0.3770207852193995
+  },
+  {
+    "model": "gru_no_dynamics",
+    "seed": "2026",
+    "recall_at_128": 0.41916859122401845
+  },
+  {
+    "model": "gru_no_dynamics",
+    "seed": "42",
+    "recall_at_128": 0.4405311778290993
+  },
+  {
+    "model": "gru_last_layer",
+    "seed": "13",
+    "recall_at_128": 0.34122401847575057
+  },
+  {
+    "model": "gru_last_layer",
+    "seed": "2026",
+    "recall_at_128": 0.32390300230946883
+  },
+  {
+    "model": "gru_last_layer",
+    "seed": "42",
+    "recall_at_128": 0.33371824480369516
+  },
+  {
+    "model": "mlp",
+    "seed": "13",
+    "recall_at_128": 0.5092378752886836
+  },
+  {
+    "model": "mlp",
+    "seed": "2026",
+    "recall_at_128": 0.43187066974595845
+  },
+  {
+    "model": "mlp",
+    "seed": "42",
+    "recall_at_128": 0.4913394919168591
+  },
+  {
+    "model": "gru_stride4",
+    "seed": "13",
+    "recall_at_128": 0.4532332563510393
+  },
+  {
+    "model": "gru_stride4",
+    "seed": "2026",
+    "recall_at_128": 0.37528868360277134
+  },
+  {
+    "model": "gru_stride4",
+    "seed": "42",
+    "recall_at_128": 0.3874133949191686
+  },
+  {
+    "model": "gru_stride16",
+    "seed": "13",
+    "recall_at_128": 0.3741339491916859
+  },
+  {
+    "model": "gru_stride16",
+    "seed": "2026",
+    "recall_at_128": 0.34584295612009236
+  },
+  {
+    "model": "gru_stride16",
+    "seed": "42",
+    "recall_at_128": 0.38856812933025403
+  }
+]
