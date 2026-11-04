@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "research_source_commit": "003d933eddda9c70939b907110e61f3513afa36a",
+  "research_source_commit": "4239193a24dfb8593b147eb28564b6c072508932",
   "privacy_policy": "Name and affiliation retained; student ID and private research artifacts omitted.",
   "files": {
     ".gitattributes": {
@@ -72,8 +72,8 @@
       "sha256": "0f91cf338b4e902678c6e26d912de252c9a164bc8aca2e033cbbcfbdde134e63"
     },
     "docs/open_source.md": {
-      "bytes": 2484,
-      "sha256": "322500570d5b27fdd33c389d50f6f6f4fea21c1b6ac5b330a310c3931ebd86df"
+      "bytes": 2813,
+      "sha256": "581c1e1184c9fe9c5ac1e20d04b43e765a3e3dfcbe27bf0dc9f6df33de49d4ab"
     },
     "docs/reproducibility.md": {
       "bytes": 8155,
