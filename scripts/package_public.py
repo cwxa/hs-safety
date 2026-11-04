@@ -82,7 +82,9 @@ def export_project(root: Path, destination: Path) -> int:
         if path.suffix in {".pdf"}:
             shutil.copyfile(path, output)
         else:
-            output.write_text(public_text(relative, path.read_text(encoding="utf-8-sig")), encoding="utf-8")
+            # 与仓库.gitattributes保持一致，确保Windows导出与新克隆的哈希相同。
+            output.write_text(public_text(relative, path.read_text(encoding="utf-8-sig")),
+                              encoding="utf-8", newline="\n")
     LOGGER.info("Public export complete files=%d destination=%s", len(selected), destination)
     return len(selected)
 
@@ -123,7 +125,7 @@ def finalize_project(root: Path, destination: Path) -> dict:
                 "privacy_policy": "Name and affiliation retained; student ID and private research artifacts omitted.",
                 "files": files}
     (destination / MANIFEST_NAME).write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
-                                           encoding="utf-8")
+                                           encoding="utf-8", newline="\n")
     LOGGER.info("Public manifest verified files=%d bytes=%d", len(files), sum(row["bytes"] for row in files.values()))
     return manifest
 
