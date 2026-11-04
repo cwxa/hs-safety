@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 
+from scripts import package_public
 from scripts.package_public import export_project, public_text, selected_file, verify_manifest
 
 
@@ -68,3 +69,15 @@ def test_manifest_rejects_paths_outside_public_tree(tmp_path):
         json.dumps({"files": {"../README.md": {"bytes": 0, "sha256": ""}}}), encoding="utf-8")
     with pytest.raises(ValueError, match="Invalid public manifest entry"):
         verify_manifest(tmp_path)
+
+
+def test_export_uses_lf_bytes_for_reproducible_clone_hashes(tmp_path, monkeypatch):
+    root = tmp_path / "source"
+    root.mkdir()
+    (root / "README.md").write_bytes(b"first\r\nsecond\r\n")
+    monkeypatch.setattr(package_public, "ROOT_FILES", {"README.md"})
+    monkeypatch.setattr(package_public, "SOURCE_DIRS", set())
+    monkeypatch.setattr(package_public, "RESULT_FILES", set())
+    destination = tmp_path / "public"
+    export_project(root, destination)
+    assert (destination / "README.md").read_bytes() == b"first\nsecond\n"
